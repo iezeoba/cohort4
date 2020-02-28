@@ -104,6 +104,14 @@ object: () => {
         }
         let name = new person("Michael","Fullstack", 25);
     return name["firstname"]+" "+name["lastname"]+" "+name["age"];
+},
+
+lookupObjt: (object, property) => {
+    var students = {
+        student1: "Mark Wein",
+        student2: "David Chalk",
+        student3: "Ghassan Amir"
+    }; return students.student3;
 }
 };
 export default syntax;

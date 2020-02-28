@@ -73,6 +73,10 @@ test("lookup key to retrieve value", () => {
     expect(syntax.object()).toBe("Michael Fullstack 25"); 
 });
 
+test("lookup value in object", () => {
+    expect(syntax.lookupObjt("students.student3")).toBe("Ghassan Amir");
+});
+
 
 
 
