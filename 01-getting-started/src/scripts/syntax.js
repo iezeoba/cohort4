@@ -60,12 +60,51 @@ myForLoop: () => {
     }; return myLoop;
 },
 // for/in
+myForinLoop: () => {
+    const forinLoop = {Make: "Toyota", Model: "Camry", Year: "2020"};
+    let a = "";    
+    for (let i in forinLoop) {
+        a += forinLoop[i]+ " ";        
+    };
+    return a;
+},
 // while
+myWhileLoop: () => {
+    let sum = 0;
+    let i = 1;
+    while (i < 5) {
+        sum += i;
+        i++;
+    } return sum;
+},
 // do while
+myDoWhile: () => {
+    let sum = 0;
+    let i = 1;
+    do {sum += i; i++;
+    } while (i < 5);
+    return sum;    
+},
 // forEach (with array and function)
+myForEach: (val) => {    
+    const square = [];
+    val.forEach(function myFor(value) {
+    square.push(value*value);});
+    return square;
+
+},
 //6. Objects / Dictionaries
 // declare object
 // lookup key to retrieve value
+object: () => {
+    function person (first, last, age) {
+            this.firstname = first;
+            this.lastname = last;
+            this.age = age;
+        }
+    }
+    /**let person =**/new Person("Michael","Fullstack", 25);
+    return person["firstname"]+" "+person["lastname"]+" "+person["age"];
+}
 };
-
 export default syntax;

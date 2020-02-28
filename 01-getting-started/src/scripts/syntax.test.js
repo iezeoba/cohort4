@@ -4,7 +4,7 @@ var myArray = [2,3,4,5];
 var endArray = [1,2,3,4,5];
 var theArray = [8,2,3,4,5];
 let nameOfPerson = {firstname: "Ifeanyi", lastname: "Ezeoba"};
-
+const eachArray = [2, 4, 6];
 test("check that argument is number", () => {
     expect(syntax.isNumber(1)).toBe("number");
 });
@@ -45,7 +45,6 @@ test("check if function adds value to end of array", () => {
     expect(syntax.addToArrEnd(endArray,6)).toStrictEqual([1,2,3,4,5,6]);
 });
 
-
 test("replace a value with another value in the array", () => {
     expect(syntax.updateArr(theArray, 1)).toStrictEqual([1,2,3,4,5]);
 });
@@ -53,6 +52,27 @@ test("replace a value with another value in the array", () => {
 test("check that for loop works", () => {
     expect(syntax.myForLoop()).toStrictEqual([0,1,2,3,4]);
 });
+
+test("check that for-in loop works", () => {
+    expect(syntax.myForinLoop()).toBe("Toyota Camry 2020 ");
+});
+
+test("check that while loop works", () => {
+    expect(syntax.myWhileLoop()).toBe(10);
+});
+
+test("check that do-while loop works", () => {
+    expect(syntax.myDoWhile()).toBe(10);
+});
+
+test("check that for-each loop works", () => {
+    expect(syntax.myForEach(eachArray)).toStrictEqual([4, 16, 36]);
+});
+
+test("lookup key to retrieve value", () => {     
+    expect(syntax.object()).toBe("Michael Fullstack 25"); 
+});
+
 
 
 
