@@ -102,9 +102,8 @@ object: () => {
             this.lastname = last;
             this.age = age;
         }
-    }
-    /**let person =**/new Person("Michael","Fullstack", 25);
-    return person["firstname"]+" "+person["lastname"]+" "+person["age"];
+        let name = new person("Michael","Fullstack", 25);
+    return name["firstname"]+" "+name["lastname"]+" "+name["age"];
 }
 };
 export default syntax;
