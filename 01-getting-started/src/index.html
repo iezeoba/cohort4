@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -95,6 +96,144 @@
         <input id="idNumber" type="number"> is a <span id="idNumberSize">unknown</span> number?
         <p id="idNumberSizexx"></p>
     </div>
+
+    <!-- ---------- Third Parallax Image with Calculator------------------ -->
+
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-white w3-wide">MY CALCULATOR</span>
+        </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64 w3-center" id="idCalculator">
+        <!--<div>
+             <input id="a" type="text">
+             <input id="b" type="text">
+             <button id="sum" onclick="sum()" value="sum">+</button> 
+             <button id="difference" onclick="difference()" value="difference">-</button>
+             <button id="product" onclick="product()" value="product">*</button>
+             <button id="remainder" onclick="remainder()" value="remainder">/</button>
+             <input id="resultscreen" type="text">
+        </div>-->
+        <div class="container-grid">
+            <div class="display-screen">
+            <div class="previous-operand" id="previous"></div>
+            <div class="current-operand" id="current" placeholder="0"></div>
+            </div>
+            <button class="double-column" id="clear">clear</button>
+            <button class="double-column" id="backspace">⌫</button>
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="three">3</button>
+            <button id="plus">+</button>
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            <button id="minus">-</button>
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+            <button id="times">*</button>
+            <button id="period">.</button>
+            <button id="zero">0</button>           
+            <button id="equals">=</button>
+            <button id="divide">÷</button>
+        </div>
+    </div>
+
+
+    <!-- ---------- Fourth Parallax Image with Canadian Taxes------------------ -->
+
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-white w3-wide">CANADIAN TAXES</span>
+        </div>
+    </div>
+
+    <div class="w3-content w3-container w3-padding-64 w3-center" id="idCanadianTaxes">
+        <div class="taxContainer">
+            <p>
+                <h3>FEDERAL TAX ON TAXABLE INCOME CALCULATOR</h3>
+                <hr>
+            </p>
+            <!--Canadian Taxes Section-->
+            <div class="taxline">
+                <div class="pullLeft">Enter your taxable income (CAD$)
+                </div>
+                <div class="pullRight"><input class="pullRight" onfocus="this.value=''" type="text" id="l36" placeholder="CAD$"></div>
+            </div>
+            <br>
+            <div class="taxline">
+                <div class="pullLeft">Base amount
+                </div>
+                <div class="pullRight" id="l37">
+                </div>
+
+            </div>
+            <br>
+            <div class="taxline">
+                <div class="pullLeft">Federal tax rate
+                </div>
+                <div class="" id="l39">
+                </div>
+
+            </div>
+            <br>
+            <div class="taxline">
+                <div class="pullLeft"><strong>Total tax to pay</strong>
+                </div>
+                <div class="pullRight" id="l42">
+                </div>
+            </div>
+            <br>
+            <div class="">
+                <div><button class="w3-hover-opacity" id="myButton">Clear</button> </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    </div>     
+    </div>
+
+    <!-- ---------- Fifth Parallax Image with Arrays------------------ -->
+
+    <div class="bgimg-2 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-white w3-wide">WORKING WITH ARRAYS</span>
+        </div>
+    </div>
+    <div class="w3-content w3-container w3-padding-64 w3-center" id="idArrays">
+        <div class="arrays-container">
+            <div>
+            <h1>Working With Arrays</h1>
+             <input type="text" id="inputlist"><br/><br/>
+             <button id="addlist">Add</button> 
+             <button id="showlist">Show</button>
+             <button id="totallist">Total</button>
+             <button id="clearlist">Clear</button>
+             <div><p id="messagebar">Status:</p></div>
+             </div>
+        </div>
+    </div>
+
+    <!-- ---------- Sixth Parallax Image with Arrays/Dictionaries------------------ -->
+
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+    <div class="w3-display-middle">
+        <span class="w3-xxlarge w3-text-white w3-wide">WORKING WITH DICTIONARIES</span>
+    </div>
+</div>
+<div class="w3-content w3-container w3-padding-64 w3-center" id="idArraysDictionaries">
+    <div class="dictionaries-container">
+        <div>
+        <h1>Working With Dictionaries</h1>
+         <input type="text" id="inputarea" class="alignleft"><br/><br/>
+         <button id="lookup" class="alignleft">Lookup</button> 
+         <div><p id="messagearea" class="alignleft">Status:</p></div>
+         </div>
+    </div>
+</div>
+
 
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">

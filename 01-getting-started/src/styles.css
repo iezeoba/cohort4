@@ -1,0 +1,163 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: minmax(60px, auto) repeat(6, 50px);
+}
+
+.container-grid>button {
+    cursor: pointer;
+    font-size: 1rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(225, 225, 225, .75);
+}
+
+.double-column {
+    grid-column: span 2;
+}
+
+.container-grid>button:hover {
+    background-color: rgba(115, 115, 115, 0.80);
+}
+
+.display-screen {
+    grid-column: 1/-1;
+    background-color: rgba(0, 0, 0, .10);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.display-screen.operand {
+    color: white;
+    font-size: 25rem;
+}
+
+/* CSS For Calculator Section*/
+
+.pullRight {
+    text-align: right;
+}
+
+.pullLeft {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.ansCol {
+    background-color: rgb(190, 228, 238);
+    text-align: left;
+    display: flex;
+    padding: 10px;
+    font-size: 25px;
+    border-color: rgba(73, 68, 68, 0.952);
+    border-style: outset;
+    height: 63px;
+}
+
+.taxline {
+    grid-template-columns: 2fr 2fr 0.5fr;
+    display: grid;
+    font-size: 15px;
+}
+
+.col0 {
+    grid-template-columns: 3fr 1fr 1fr;
+    display: grid;
+}
+
+.col1 {
+    grid-template-columns: 3fr 1fr;
+    display: grid;
+}
+
+.col2 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: grid;
+}
+
+.col3 {
+    grid-template-columns: 1fr 2fr 1fr;
+    display: grid;
+}
+
+.taxContainer {
+    border-style: outset;
+}
+
+.calculator {
+    width: 300px;
+    margin: auto;
+    display: grid;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(47, 47, 45);
+    margin-bottom: 10px;
+}
+
+.letter {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 25px;
+    background-color: rgb(251, 251, 247);
+    border-color: rgb(238, 238, 238);
+    border-style: outset;
+}
+
+
+/* Turn off parallax scrolling for tablets and phones */
+
+@media only screen and (min-device-width: 1600px) {
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3 {
+        background-attachment: scroll;
+        min-height: 400px;
+    }
+}
+
+/* Working With Arrays*/
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.arrays-container {
+    display: grid;
+    justify-content: center;
+    align-content: left;
+    border-style: outset;
+}
+
+.dictionaries-container {
+    display: flexbox;
+    justify-content: flex-start;
+    align-content: flex-start;
+    border-style: outset;
+}
+
+.alignleft {
+    text-align: left;
+    align-content: flex-start;
+    margin: left;
+}
+
+#inputarea {
+    margin-left: auto;    
+}
