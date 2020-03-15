@@ -204,10 +204,12 @@ const province = {
     QC: "Quebec",
     SK: "Saskatchewan"
 };
-inputarea.value.toUpperCase();
+
 lookup.addEventListener("click", () => {
-        if (province.hasOwnProperty(inputarea.value) == true) {
-            messagearea.textContent = province[inputarea.value];
+let inputString = inputarea.value;
+let inputResult = inputString.toUpperCase();
+        if (province.hasOwnProperty(inputResult) == true) {
+            messagearea.textContent = province[inputResult];
             console.log(inputarea.value);
           } else {
             messagearea.textContent = "Please enter a valid province code";
