@@ -166,9 +166,23 @@ let workingWithArrays = [];
 addlist.addEventListener("click",() => {
     if(isNaN(inputlist.value)) {
     messagebar.textContent = "The input is not a number";
+    inputlist.value = "";
     } else if (Number(inputlist.value !== "")) {
     workingWithArrays.push(inputlist.value);
     messagebar.textContent = "Your number has been added to the array";
+    inputlist.value = "";
+    }
+    console.log(inputlist.value);
+    console.log(workingWithArrays);
+});
+document.querySelector("#inputlist").addEventListener('keypress', function (e) {
+    if ((isNaN(inputlist.value)) && e.key === 'Enter') {
+    messagebar.textContent = "The input is not a number";
+    inputlist.value = "";
+    } else if (Number(inputlist.value !== "")) {
+    workingWithArrays.push(inputlist.value);
+    messagebar.textContent = "Your number has been added to the array";
+    inputlist.value = "";
     }
     console.log(inputlist.value);
     console.log(workingWithArrays);
@@ -214,4 +228,14 @@ let inputResult = inputString.toUpperCase();
           } else {
             messagearea.textContent = "Please enter a valid province code";
           }
+});
+document.querySelector("#inputarea").addEventListener('keypress', function (e) {
+let inputString = inputarea.value;
+let inputResult = inputString.toUpperCase();
+    if (province.hasOwnProperty(inputResult) == true && e.key === "Enter") {
+        messagearea.textContent = province[inputResult];
+        console.log(inputarea.value);
+      } else {
+        messagearea.textContent = "Please enter a valid province code";
+      }
 });
