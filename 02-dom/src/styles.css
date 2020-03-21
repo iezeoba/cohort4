@@ -41,7 +41,7 @@ body {
 }
 
 .floatLeft {
-    display: inline-block;
+    /* display: inline-block; conflicts with the float property */
     float: left;
     background: white;
     width: 47vw;
@@ -50,7 +50,7 @@ body {
 }
 
 .floatRight {
-    display: inline-block;
+    /* display: inline-block; conflicts with the float property*/
     float: right;
     background: white;
     width:47vw; 
