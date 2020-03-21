@@ -1,4 +1,5 @@
-<!-- The Basic DOM -->
+<!-- ---------- The Basic DOM ---------- -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,14 @@
     <title>DOM</title>
 </head>
 <body>
-    <div id="idMainDiv" class="dom-container">
-        <div>
+    <div id="idMainDiv" class="domContainer">
+        <div class="childDiv">
         <h1 id="idH1element">Basic DOM</h1>
         <p id="idParagraph">This is a list of stuff</p>
         <ol id="idOrderList">
-            <li class="listitem">Item 1 <button>Remove</button></li>
-            <li class="listitem">Item 2 <button>Remove</button></li>
-            <li class="listitem">Item 3 <button>Remove</button></li>
+            <li class="listItem">Item 1 <button>Remove</button></li>
+            <li class="listItem">Item 2 <button>Remove</button></li>
+            <li class="listItem">Item 3 <button>Remove</button></li>
         </ol>
         <input type="text" id="idInputItem">
         <button id="idShowItem">Show</button>
@@ -24,10 +25,44 @@
         <span id="idStatusBox">Status</span>
     </div>
 
-<!-- Working With Cards -->
-    <div>
-        
+<!-- ---------- Working With Cards ---------- -->
+
+<div id="idParentDiv" class="cardsContainer">
+    <div class="floatLeft">
+        <h1>Working With Cards</h1>
+        <div class="innerDiv">        
+            <button>Add Card</button>
+            <div class="clCard">
+                <p>Card 1</p>
+                <button>Add Before</button>
+                <button>Add After</button>
+                <button>Delete</button>
+            </div>
+            <div class="clCard">
+                <p>Card 2</p>
+                <button>Add Before</button>
+                <button>Add After</button>
+                <button>Delete</button>
+            </div>
+            <div class="clCard">
+                <p>Card 3</p>
+                <button>Add Before</button>
+                <button>Add After</button>
+                <button>Delete</button>
+            </div>
+
+            <!-- <div class="col">
+                <div class="leftside"></div>
+            </div>
+            <div class="col">
+                <div class="rightside"></div>
+            </div> -->            
+        </div>
     </div>
+    <div class="floatRight">
+        <h1>Right Side</h1>
+    </div>
+</div>
 <script src="./scripts/dom.js" type="module"></script>   
 </body>
 </html>
