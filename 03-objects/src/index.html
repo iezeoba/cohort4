@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Objects</title>
+</head>
+<body>
+    <!-- ---------- Account Class User Interface Section ---------- -->
+    <div id="acctContainer" class="clAcctUserIntface">
+        <h1 id="h1">Welcome</h1>
+        <div id="acctInfo" class="acctInfo">
+        <form action="#" id="accountList"> 
+            <span class="clSpan">Account Name: <input id="acctName"> Select Account <select id="dropdown" name="accounts"></span>
+                <option value="Select">Select</option>
+                <option value="Checking Account">Checking Account</option>
+                <option value="Savings Account">Savings Account</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="RESP Account">RESP Account</option>
+              </select><br><br>
+        </form>
+        <input id="addAcc" class="addAcc" type="button" value="Add New Account"><br>
+        </div>
+        <div id="acctTrnx" class="acctTrnx">
+        <span class="clSpan"><input id="idAmount" type="number" required placeholder="Enter amount"></span>
+        <button>Make Deposit</button>
+        <button>Withdraw</button>
+        <button>Transfer</button>
+        </div>
+        <div id="idHistory" class="trnxHistory">
+        <table>
+            <tr>
+              <th>Account</th>
+              <th>Balance</th>
+            </tr>
+            <tr>
+              <td>Checking Account</td>
+              <td><input id="checkingAcc" type="number" readonly></td>
+            </tr>
+            <tr>
+              <td>Savings Account</td>
+              <td><input id="savingsAcc" type="number" readonly></td>
+            </tr>
+            <tr>
+              <td>Credit Card</td>
+              <td><input id="creditCard" type="number" readonly></td>
+            </tr>
+            <tr>
+              <td>RESP Account</td>
+              <td><input id="respAcc" type="number" readonly></td>
+            </tr>
+            <tr>
+              <td>Total Balance</td>
+              <td><input id="totBal" type="number" readonly></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <script src="./scripts/index.js" type="module"></script>
+</body>
+</html>
