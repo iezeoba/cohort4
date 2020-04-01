@@ -12,21 +12,29 @@
         <h1 id="h1">Welcome</h1>
         <div id="acctInfo" class="acctInfo">
         <form action="#" id="accountList"> 
-            <span class="clSpan">Account Name: <input id="acctName"> Select Account <select id="dropdown" name="accounts"></span>
+            <span class="clSpan">Account Name: <input id="acctName"> Select Account Type <select id="dropdown" name="accounts"></span>
                 <option value="Select">Select</option>
                 <option value="Checking Account">Checking Account</option>
                 <option value="Savings Account">Savings Account</option>
                 <option value="Credit Card">Credit Card</option>
                 <option value="RESP Account">RESP Account</option>
               </select><br><br>
-        </form>
-        <input id="addAcc" class="addAcc" type="button" value="Add New Account"><br>
+        </form>        
+        <input id="addAcc" class="addAcc" type="button" value="Add New Account">
+        <h6 id="idh6">*To add customized account to dropdown list enter account name here and click add</h6> <input id="idCustAcc" type="text"><button id="addCustAcc">Add</button>
         </div>
         <div id="acctTrnx" class="acctTrnx">
         <span class="clSpan"><input id="idAmount" type="number" required placeholder="Enter amount"></span>
-        <button>Make Deposit</button>
-        <button>Withdraw</button>
-        <button>Transfer</button>
+        <span>Account <select id="dropdownTrxn" name="accountsTrxn"> 
+          <option value="Select">Select Account</option>
+          <option value="Checking Account">Checking Account</option>
+          <option value="Savings Account">Savings Account</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="RESP Account">RESP Account</option>
+        </select></span>
+        <button id="idDeposit">Make Deposit</button>
+        <button id="idWithdraw">Withdraw</button>
+        <button id="idTransfer">Transfer</button>
         </div>
         <div id="idHistory" class="trnxHistory">
         <table>
@@ -35,7 +43,7 @@
               <th>Balance</th>
             </tr>
             <tr>
-              <td>Checking Account</td>
+              <span id="idSpan"><td>Checking Account</td></span>
               <td><input id="checkingAcc" type="number" readonly></td>
             </tr>
             <tr>

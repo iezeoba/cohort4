@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+<select id="dropdown">
+	<option value="Checking Account">Checking Account</option>
+	<option value="Savings Account">Savings Account</option>
+</select>
+<input type="text" id="accType">
+<button id="addAcct">Add Account</button>
+<script>
+	document.getElementById("addAcct").addEventListener("click", insertValue);	
+	function insertValue() {
+		console.log("hey hey");
+		let dropdown = document.getElementById("dropdown"),
+		txtAccType = document.getElementById("accType").value,
+		newOption = document.createElement("OPTION"),
+		newOptionVal = document.createTextNode(txtAccType);
+
+		newOption.appendChild(newOptionVal);
+		dropdown.insertBefore(newOption, dropdown.lastchild);
+	}
+
+</script>
+</body>
+</html>

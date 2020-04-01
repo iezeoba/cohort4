@@ -12,14 +12,14 @@ body {
     margin: 5px 5px 5px 5px;
     border-width: 1px;
     border-style: solid;
-    height: 465px; 
+    height: auto; 
 }
 
 #acctInfo {
     margin: 10px 10px 10px 10px;
     border-width: 1px;
     border-style: solid;
-    height: 60px;
+    height: auto;
     padding: 5px 5px 5px 5px;
 }
 
@@ -28,11 +28,20 @@ body {
     width: 80%;
 }
 
+#idh6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#idCustAcc {
+    margin-left: 5px;
+}
+
 #acctTrnx {
     margin: 10px 10px 10px 10px; 
     border-width: 1px;
     border-style: solid;
-    height: 20px;
+    height: auto;
     padding: 10px 10px 10px 5px;
 }
 
