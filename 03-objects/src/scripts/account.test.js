@@ -10,9 +10,9 @@ test("Testing _isPositive", () => {
 });
 
 test("Testing deposit", () => {    
-    expect(myAccount.deposit(50)).toBe(250); 
+    expect(myAccount.deposit(50)).toBe(Number(250).toFixed(2)); 
     expect(myAccount.deposit(-50)).toBe("Amount entered is negative");
-    expect(myAccount.deposit(500)).toBe(750);   
+    expect(myAccount.deposit(500)).toBe(Number(750).toFixed(2));   
 });
 
 test("Testing _isAllowed", () => {
@@ -21,9 +21,15 @@ test("Testing _isAllowed", () => {
 });
 
 test("Testing withdraw", () => {
-     expect(myAccount.withdraw(50)).toBe(700);
+     expect(myAccount.withdraw(50)).toBe(Number(700).toFixed(2));
      expect(myAccount.withdraw(-50)).toBe("Amount is negative");
      expect(myAccount.withdraw(1250)).toBe("Insufficient balance");
+});
+
+test("Testing transfer", () => {
+    expect(myAccount.transfer(50)).toBe(Number(650).toFixed(2));
+    expect(myAccount.transfer(-50)).toBe("Amount is negative");
+    expect(myAccount.transfer(1250)).toBe("Insufficient balance");
 });
 
 // import {accountcontroller}....

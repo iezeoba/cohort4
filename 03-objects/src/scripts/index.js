@@ -93,3 +93,17 @@ function depositCash(amount) {
         respAcc.value = myAccount.deposit(idAmount.value);
     }
 };
+
+idWithdraw.addEventListener("click", withdrawCash);
+
+function withdrawCash(amount) {
+    if (dropdownTrxn.value == "Checking Account") {
+        checkingAcc.value = myAccount.withdraw(idAmount.value);
+    } else if (dropdownTrxn.value == "Savings Account") {
+        savingsAcc.value = myAccount.withdraw(idAmount.value);
+    } else if (dropdownTrxn.value == "Credit Card") {
+        creditCard.value = myAccount.withdraw(idAmount.value);
+    } else if (dropdownTrxn.value == "RESP Account") {
+        respAcc.value = myAccount.withdraw(idAmount.value);
+    }
+};

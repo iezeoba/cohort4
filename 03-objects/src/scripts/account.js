@@ -5,41 +5,49 @@ export class Account {
     }
     deposit(amt) {
         let amount = parseFloat(amt);
-    if (!this._isPositive(amount)) {
-        // console.log(`Deposit: ${this.name} new balance is ${this.balance}`);
-        return "Amount entered is negative";
-    } else return (this.balance += amount).toFixed(2);
-}
-withdraw(amt) {
-    let amount = parseFloat(amt);
-    if (this._isAllowed(amount)) {
-        this.balance -= amount;
-        // console.log(`Withdraw: ${this.name} new balance is ${this.balance}`);
-        return (this.balance).toFixed(2);
-    } else if (amount < 0) {
-        return "Amount is negative"
-    } else if (!this._isAllowed(amount)) {
-        return "Insufficient balance";
+        if (!this._isPositive(amount)) {
+            // console.log(`Deposit: ${this.name} new balance is ${this.balance}`);
+            return "Amount entered is negative";
+        } else return (this.balance += amount).toFixed(2);
     }
-}
-transfer() {
-    if (this.withdraw(amount) && account.deposit(amount)) {
-        console.log(`Transfer: ${amount} has been moved from ${this.name} to ${account.name}`);
+    withdraw(amt) {
+        let amount = parseFloat(amt);
+        if (this._isAllowed(amount)) {
+            this.balance -= amount;
+            // console.log(`Withdraw: ${this.name} new balance is ${this.balance}`);
+            return (this.balance).toFixed(2);
+        } else if (amount < 0) {
+            return "Amount is negative"
+        } else if (!this._isAllowed(amount)) {
+            return "Insufficient balance";
+        }
+    }
+    transfer(amt) {
+        let amount = parseFloat(amt);
+        if (this.withdraw(amount) && this.deposit(amount)) {
+            this.balance -= amount;
+            console.log(`Transfer: ${amount} has been moved from ${this.name} to ${this.name}`);
+            return (this.balance).toFixed(2);
+            // return true;
+        } else if (amount < 0) {
+            return "Amount is negative"
+        } else if (!this._isAllowed(amount)) {
+            return "Insufficient balance";
+        }
+    }
+    //     return false;
+    // }
+    _isPositive(amount) {
+        if (amount < 0) {
+            return false;
+        }
         return true;
     }
-    return false;
-}
-_isPositive(amount) {
-    if (amount < 0) {
-        return false;
+    _isAllowed(amount) {
+        if (this._isPositive(amount) && this.balance - amount >= 0) {
+            return true;
+        } else return false;
     }
-    return true;
-}
-_isAllowed(amount) {
-    if (this._isPositive(amount) && this.balance - amount >= 0) {
-        return true;
-    } else return false;
-}
 }
 // export class AccountController {
 //     constructor(name) {
