@@ -8,99 +8,108 @@ import functions from './functions.js';
 idNumber.addEventListener('change', (() => {
     idNumberSize.textContent = functions.size(idNumber.value);
 }));
-// Simple Calculator
-// sum.addEventListener('click', () => {
-//     console.log("I'm the button click");
-//     resultscreen.textContent = result;
-//     })
-// var a, b, result;
-// setValues: () => {
-// a = Number(document.getElementById("a").value);
-// b = Number(document.getElementById("b").value);
-// };
-// sum: () => {
-//     setValues();
-//     result = a+b;
-//     alert(result);
-// };
-// difference: () => {
-//     setValues();
-//     result = a-b;
-//     alert(result);
-// };
-// product: () => {
-//     setValues();
-//     result = a*b;
-//     alert(result);
-// };
-// remainder: () => {
-//     setValues();
-//     result = a/b;
-//     alert(result);
-// };
 
 // My Calculator Section
+// ----- Simple Calculator -----
+calcBtnPlus.addEventListener("click", calcFunction);
+calcBtnMinus.addEventListener("click", calcFunction);
+calcBtnMultiply.addEventListener("click", calcFunction);
+calcBtnDivide.addEventListener("click", calcFunction);
+
+function calcFunction(event) {
+    const a = Number(calcInput1.value);
+    const b = Number(calcInput2.value);
+    // let result; //To use this, also use line 26,34,37,40,43,46 & 49
+    // console.log(event);
+    if (isNaN(a) || isNaN(b)) {
+        calcOutput.textContent = "Please input numbers only"
+        // result = "Please input numbers only";
+    } else {
+        if (event.target.id === "calcBtnPlus") {
+            // console.log("Input 1:", Number(calcInput1.value));
+            // console.log("Input 2:", Number(calcInput2.value));
+            // console.log("Target ID:", event.target.id);
+            // calcOutput.textContent = functions.add(Number(calcInput1.value),Number(calcInput2.value));
+            calcOutput.textContent = functions.add(a, b);
+            // result = functions.add(a, b); //This is an alternative statement where variable result is declared and calcOutput.textContent is assigned to result
+        } else if (event.target.id === "calcBtnMinus") {
+            calcOutput.textContent = functions.subtract(a, b);
+            // result = functions.subtract(a, b);
+        } else if (event.target.id === "calcBtnMultiply") {
+            calcOutput.textContent = functions.multiply(a, b);
+            // result = functions.multiply(a, b);
+        } else if (event.target.id === "calcBtnDivide") {
+            calcOutput.textContent = functions.divide(a, b);
+            // result = functions.divide(a, b);
+        } else {
+            calcOutput.textContent = "Something went wrong";
+            // result = "Something went wrong";
+        }
+    }
+    // calcOutput.textContent = result //To be used when using the alternate code
+};
+// ----- Complex Calculator -----
 var num1;
 var num2;
 var oper;
-one.addEventListener('click',() => {
+one.addEventListener('click', () => {
     current.textContent += "1";
 });
-two.addEventListener('click',() => {
+two.addEventListener('click', () => {
     current.textContent += "2";
 });
-three.addEventListener('click',() => {
+three.addEventListener('click', () => {
     current.textContent += "3";
 });
-four.addEventListener('click',() => {
+four.addEventListener('click', () => {
     current.textContent += "4";
 });
-five.addEventListener('click',() => {
+five.addEventListener('click', () => {
     current.textContent += "5";
 });
-six.addEventListener('click',() => {
+six.addEventListener('click', () => {
     current.textContent += "6";
 });
-seven.addEventListener('click',() => {
+seven.addEventListener('click', () => {
     current.textContent += "7";
 });
-eight.addEventListener('click',() => {
+eight.addEventListener('click', () => {
     current.textContent += "8";
 });
-nine.addEventListener('click',() => {
+nine.addEventListener('click', () => {
     current.textContent += "9";
 });
-zero.addEventListener('click',() => {
+zero.addEventListener('click', () => {
     current.textContent += "0";
 });
-period.addEventListener('click',() => {
+period.addEventListener('click', () => {
     current.textContent += ".";
 });
-plus.addEventListener('click',() => {
+plus.addEventListener('click', () => {
     num1 = current.textContent;
     oper = "+";
     current.textContent += "+";
 });
-minus.addEventListener('click',() => {
+minus.addEventListener('click', () => {
     num1 = current.textContent;
     oper = "-";
     current.textContent += "-";
 });
-times.addEventListener('click',() => {
+times.addEventListener('click', () => {
     num1 = current.textContent;
     oper = "*";
     current.textContent += "*";
 });
-divide.addEventListener('click',() => {
+divide.addEventListener('click', () => {
     num1 = current.textContent;
     oper = "÷";
     current.textContent += "÷";
 });
-clear.addEventListener('click',() => {
+clear.addEventListener('click', () => {
     current.textContent = "";
     previous.textContent = "";
 });
-backspace.addEventListener('click',() => {
+backspace.addEventListener('click', () => {
     current.textContent = current.textContent.substr(0, current.textContent.length - 1);
 });
 equals.addEventListener('click', () => {
@@ -163,26 +172,26 @@ l36.addEventListener('change', () => {
 
 // Working With Arrays Section
 let workingWithArrays = [];
-addlist.addEventListener("click",() => {
-    if(isNaN(inputlist.value)) {
-    messagebar.textContent = "The input is not a number";
-    inputlist.value = "";
+addlist.addEventListener("click", () => {
+    if (isNaN(inputlist.value)) {
+        messagebar.textContent = "The input is not a number";
+        inputlist.value = "";
     } else if (Number(inputlist.value !== "")) {
-    workingWithArrays.push(inputlist.value);
-    messagebar.textContent = "Your number has been added to the array";
-    inputlist.value = "";
+        workingWithArrays.push(inputlist.value);
+        messagebar.textContent = "Your number has been added to the array";
+        inputlist.value = "";
     }
     console.log(inputlist.value);
     console.log(workingWithArrays);
 });
 document.querySelector("#inputlist").addEventListener('keypress', function (e) {
     if ((isNaN(inputlist.value)) && e.key === 'Enter') {
-    messagebar.textContent = "The input is not a number";
-    inputlist.value = "";
+        messagebar.textContent = "The input is not a number";
+        inputlist.value = "";
     } else if (Number(inputlist.value !== "")) {
-    workingWithArrays.push(inputlist.value);
-    messagebar.textContent = "Your number has been added to the array";
-    inputlist.value = "";
+        workingWithArrays.push(inputlist.value);
+        messagebar.textContent = "Your number has been added to the array";
+        inputlist.value = "";
     }
     console.log(inputlist.value);
     console.log(workingWithArrays);
@@ -194,13 +203,13 @@ totallist.addEventListener("click", () => {
     let sumlist = workingWithArrays.reduce(function sumarr(total, num) {
         return Number(total) + Number(num);
     }, 0);
-    inputlist.value = 0;     
+    inputlist.value = 0;
     messagebar.textContent = "Total =" + " " + Number(sumlist);
     console.log(sumlist);
 });
-clearlist.addEventListener('click', () => {     
-	workingWithArrays.length = 0;//or workingWithArrays = [];     
-    inputlist.value = ""; 
+clearlist.addEventListener('click', () => {
+    workingWithArrays.length = 0;//or workingWithArrays = [];     
+    inputlist.value = "";
     messagebar.textContent = "";
     console.log(workingWithArrays);
 });
@@ -212,7 +221,7 @@ const province = {
     MB: "Manitoba",
     NB: "New Brunswick",
     NL: "Newfoundland and Labrador",
-    NS: "Nova Scotia",    
+    NS: "Nova Scotia",
     ON: "Ontario",
     PE: "Prince Edward Island",
     QC: "Quebec",
@@ -220,22 +229,22 @@ const province = {
 };
 
 lookup.addEventListener("click", () => {
-let inputString = inputarea.value;
-let inputResult = inputString.toUpperCase();
-        if (province.hasOwnProperty(inputResult) == true) {
-            messagearea.textContent = province[inputResult];
-            console.log(inputarea.value);
-          } else {
-            messagearea.textContent = "Please enter a valid province code";
-          }
+    let inputString = inputarea.value;
+    let inputResult = inputString.toUpperCase();
+    if (province.hasOwnProperty(inputResult) == true) {
+        messagearea.textContent = province[inputResult];
+        console.log(inputarea.value);
+    } else {
+        messagearea.textContent = "Please enter a valid province code";
+    }
 });
 document.querySelector("#inputarea").addEventListener('keypress', function (e) {
-let inputString = inputarea.value;
-let inputResult = inputString.toUpperCase();
+    let inputString = inputarea.value;
+    let inputResult = inputString.toUpperCase();
     if (province.hasOwnProperty(inputResult) == true && e.key === "Enter") {
         messagearea.textContent = province[inputResult];
         console.log(inputarea.value);
-      } else {
+    } else {
         messagearea.textContent = "Please enter a valid province code";
-      }
+    }
 });

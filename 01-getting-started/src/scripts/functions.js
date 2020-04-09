@@ -27,9 +27,13 @@ const functions = {
     },
 
     divide: (num1, num2) => {
-        return num1 / num2;
+        if (num2 === 0) {
+            return "Can't divide by zero"
+        } else {
+            return num1 / num2;
+        }
     },
-    
+
     // Additional tests just for practice and fun
     greet: (greeting) => {
         let response = "Goedendag";

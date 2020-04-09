@@ -32,6 +32,7 @@ test('Does that multiply function work?', () => {
 test('Does that divide function work?', () => {
     expect(functions.divide(6,2)).toBe(3);
     expect(functions.divide(15,3)).toBe(5);
+    expect(functions.divide(4,0)).toBe("Can't divide by zero");
 });
 
 // Additional tests just for practice and fun
