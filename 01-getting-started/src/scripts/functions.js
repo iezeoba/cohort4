@@ -34,7 +34,7 @@ const functions = {
         }
     },
 
-    // Additional tests just for practice and fun
+    // Additional business logics just for practice and fun
     greet: (greeting) => {
         let response = "Goedendag";
         if (greeting === "Hello") {

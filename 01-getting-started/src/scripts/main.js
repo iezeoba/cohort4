@@ -248,3 +248,11 @@ document.querySelector("#inputarea").addEventListener('keypress', function (e) {
         messagearea.textContent = "Please enter a valid province code";
     }
 });
+
+// Additional presentation logics just for practice and fun
+myBtn.addEventListener("click", replyGreeting);
+
+function replyGreeting() {
+    outputField.textContent = functions.greet(myInput.value);
+    console.log(functions.greet(myInput.value));
+};
