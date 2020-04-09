@@ -1,6 +1,6 @@
 
 const functions = {
-    
+
     size: (num) => {
         if (num < 10) return "small";
         if (num < 20) return "medium";
@@ -9,13 +9,13 @@ const functions = {
 
     },
 
-    isEven: (num)=> {
-        if (num%2 == 0) return "true";
+    isEven: (num) => {
+        if (num % 2 === 0) return "true";
         else return "false";
     },
 
     add: (num1, num2) => {
-        return Number(num1) + Number(num2);
+        return num1 + num2;
     },
 
     subtract: (num1, num2) => {
@@ -28,8 +28,21 @@ const functions = {
 
     divide: (num1, num2) => {
         return num1 / num2;
+    },
+    
+    // Additional tests just for practice and fun
+    greet: (greeting) => {
+        let response = "Goedendag";
+        if (greeting === "Hello") {
+            response = "Howdy";
+        } else if (greeting === "Hallo") {
+            response = "Guten Tag";
+        } else if (greeting === "Hola") {
+            response = "Buenos Dias";
+        }
+        return response;
     }
 };
-    
+
 
 export default functions;
