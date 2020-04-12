@@ -13,31 +13,62 @@ document.body.addEventListener("click", (e) => {
 idShowItem.addEventListener("click", () => {
     let showList = document.getElementsByTagName("ol")[0];
     console.log(showList);
+    idStatusBox.textContent = showList;
 });
-idAddItem.addEventListener("click", () => {
-    if (idInputItem.value.length > 0) {
-        let newLi = document.createElement("li");
-        let newItem = document.createTextNode(idInputItem.value);
-        newLi.appendChild(newItem);
-        document.getElementById("idOrderList").appendChild(newLi);
-        idInputItem.value = "";
+let AddItem = document.getElementById("idAddItem");
+let listItems = document.getElementsByTagName("li");
+
+function inputLength() {
+    return idInputItem.value.length
+};
+
+function addNewItem() {
+    let newLi = document.createElement("li");
+    let newItem = document.createTextNode(idInputItem.value);
+    newLi.appendChild(newItem);
+    document.getElementById("idList").appendChild(newLi);
+    idInputItem.value = "";
+
+    let btn = document.createElement("button");
+    btn.appendChild(document.createTextNode("Remove"));
+    newLi.appendChild(btn);
+    btn.onclick = removeParent;
+};
+
+function addNewItemOnClick(){
+    if (inputLength() > 0) {
+        addNewItem();
     }
-});
-document.querySelector("#idInputItem").addEventListener("keypress", function (e) {
-    if (idInputItem.value.length > 0 && e.key === "Enter") {
-        let newLi = document.createElement("li");
-        let newItem = document.createTextNode(idInputItem.value);
-        newLi.appendChild(newItem);
-        // var button = document.createElement("button");
-        // button.textContent = "Remove";
-        // newLi.appendChild(button);
-        // newLi.setAttribute("id","element4");
-        // newItem.appendChild(newLi);
-        // console.log(newLi.id);
-        document.getElementById("idOrderList").appendChild(newLi);
-        idInputItem.value = "";
+};
+
+function addNewItemOnKeypress(e) {
+    if (inputLength() > 0 && e.key === "Enter") {
+        addNewItem();
     }
-});
+};
+
+AddItem.addEventListener("click", addNewItemOnClick);
+idInputItem.addEventListener("keypress", addNewItemOnKeypress);
+
+function listLength() {
+    return listItems.length;
+};
+
+// TO CREATE DELETE BUTTONS FOR THE EXISTING LIST ITEMS
+let i;
+function deleteButton() {
+    let btn = document.createElement("button");
+    btn.appendChild(document.createTextNode("Remove"));
+    listItems[i].appendChild(btn);
+    btn.onclick = removeParent;
+};
+for (i = 0; i < listLength(); i++) {
+    deleteButton();
+};
+
+function removeParent(event) {
+    event.target.parentNode.remove();
+};
 
 // ---------- Working With Cards ----------
 console.log(idButton);
