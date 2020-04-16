@@ -35,7 +35,7 @@ function addNewItem() {
     btn.onclick = removeParent;
 };
 
-function addNewItemOnClick(){
+function addNewItemOnClick() {
     if (inputLength() > 0) {
         addNewItem();
     }
@@ -70,34 +70,60 @@ function removeParent(event) {
     event.target.parentNode.remove();
 };
 
-// ---------- Working With Cards ----------
-console.log(idButton);
+// ---------- Working With Cards ---------------------------
+let addCard = document.getElementById("addCard");
 
-let counter = 0;
+addCard.addEventListener("click", newCard);
+function newCard() {
+    let newDiv = document.createElement("div");
+    newDiv.appendChild(document.createTextNode("Card 1"));
+    document.getElementById("innerDiv").appendChild(newDiv);
 
-document.body.addEventListener("click", e => {
-    // console.log("You Clicked, at your command");
-    // console.log(e.target.textContent);
-    // console.log(e.target.nodeName);
-    // console.log(e.target);
+    let btnAddBefore = document.createElement("button");
+    btnAddBefore.appendChild(document.createTextNode("Add Before"));
+    newDiv.appendChild(btnAddBefore);
 
-    if (e.target.nodeName === 'BUTTON') {
-        // document.body.appendChild(domfuncs.buildCard("You just added " + counter++));
-        console.log(e.target.textContent);
-        if (e.target.textContent === "Before") {
-            domfuncs.addBefore(e.target.parentElement, "You just added " + counter++);
-        }
-    }
+    let btnAddAfter = document.createElement("button");
+    btnAddAfter.appendChild(document.createTextNode("Add After"));
+    newDiv.appendChild(btnAddAfter);
 
-    // const div = document.createElement("div");
-    // div.className = "clCard";
-    // div.appendChild(document.createTextNode("This has been inserted"));
+    let btnDelete = document.createElement("button");
+    btnDelete.appendChild(document.createTextNode("Delete"));
+    newDiv.appendChild(btnDelete);
+    btnDelete.onclick = removeParent;
+    console.log("adding new div");
+};
 
-    // idStuff2.insertAdjacentElement("afterend", div);
 
-})
 
-console.log(idStuff2);
+
+// Larry's Presentation ------------------------------------
+// let counter = 0;
+
+// document.body.addEventListener("click", e => {
+//     // console.log("You Clicked, at your command");
+//     // console.log(e.target.textContent);
+//     // console.log(e.target.nodeName);
+//     // console.log(e.target);
+
+//     if (e.target.nodeName === 'BUTTON') {
+//         // document.body.appendChild(domfuncs.buildCard("You just added " + counter++));
+//         console.log(e.target.textContent);
+//         if (e.target.textContent === "Before") {
+//             domfuncs.addBefore(e.target.parentElement, "You just added " + counter++);
+//         }
+//     }
+
+//     // const div = document.createElement("div");
+//     // div.className = "clCard";
+//     // div.appendChild(document.createTextNode("This has been inserted"));
+
+//     // idStuff2.insertAdjacentElement("afterend", div);
+
+// })
+// console.log(idStuff2);
+
+// Another Presentation =============================================================
 
 // let card = new CardManager();
 // const btnPrependTo = document.querySelector("#btnPrependTo");
@@ -107,9 +133,7 @@ console.log(idStuff2);
 // const btnCard = document.getElementById("btnCard");
 // const cardContainer = document.querySelector("#card-container");
 
-
 // const olList = document.querySelector("#olList");
-
 
 // btnPrependTo.addEventListener("click", function (e) {
 //     let pm = new PageManager();
@@ -117,7 +141,6 @@ console.log(idStuff2);
 
 //     let element = pm.createListElement("Item " + count, "item" + count, "lstItem");
 //     pm.prependElement(element, olList);
-
 
 //     e.preventDefault();
 // });
@@ -149,7 +172,6 @@ console.log(idStuff2);
 //     e.preventDefault();
 // });
 
-
 // olList.addEventListener("click", function (e) {
 //     e.target;
 //     e.preventDefault();
@@ -159,4 +181,3 @@ console.log(idStuff2);
 //     cardContainer.appendChild(card.buildCard());
 //     e.preventDefault();
 // });
-
