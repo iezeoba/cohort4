@@ -4,26 +4,12 @@ export class Community {
         this.allCities = [];
     }
 async getCities(url = '', data = {}) {
-            // Default options are marked with *
-        const response = await fetch(URL, {
-            method: 'POST',     // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors',       // no-cors, *cors, same-origin
-            cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow',         // manual, *follow, error
-            referrer: 'no-referrer',    // no-referrer, *client
-            body: JSON.stringify(data)  // body data type must match "Content-Type" header
-        });
+      let cityData = await fetch("http://127.0.0.1:5000/clear");
+      cityData = await fetch("http://127.0.0.1:5000/load");
+      cityData = await fetch("http://127.0.0.1:5000/all");
+      let city = await cityData.json();
+      return city;
 
-        const json = await response.json();    // parses JSON response into native JavaScript objects
-        json.status = response.status;
-        json.statusText = response.statusText;
-        // console.log(json, typeof(json));
-        return json;
     }
 
 }
