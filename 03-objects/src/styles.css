@@ -77,14 +77,30 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+#citiesAndCommunities {
+    margin: 5px 5px 5px 5px;
+    border: solid;
+    border-width: 1px;
+    height: auto;
+}
+
+h1 {
+    margin-left: 5px;
+}
+
 label {
     display: inline-block;
     float: left;
     clear: left;
     width: 250px;
-    text-align: right;
+    text-align: left;
+    margin-left: 5px;
 }
 input {
   display: inline-block;
   float: left;
+}
+
+button {
+    margin-left: 5px;
 }

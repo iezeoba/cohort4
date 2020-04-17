@@ -7,31 +7,22 @@
     <title>Cities And Communities</title>
 </head>
 <body>
-    <input id="inputCity" type="text">
+    <!--<div> 
+        <input id="inputCity" type="text">
     <button id="addCity">Add</button>
+    </div> -->
     <div id="citiesAndCommunities">
         <h1>Cities and Communities</h1>
-        <label>City:</label><input id="" type="text"><br><br>
-        <label>Latitude:</label><input id="" type="text"><br><br>
-        <label>Longitude:</label><input id="" type="text"><br><br>
-        <label>Population:</label><input id="" type="text"><br><br>
-        <button id="addCity">Add City</button>
-        <div id="domBoxID" class="domBox"></div>
+        <label>City:</label><input id="idCity" type="text"><br><br>
+        <label>Latitude:</label><input id="idLatitude" type="text"><br><br>
+        <label>Longitude:</label><input id="idLongitude" type="text"><br><br>
+        <label>Population:</label><input id="idPopulation" type="text"><br><br>
+        <button id="createCity">New City</button>
+        <button id="deleteCity">Delete City</button><br>
+        <label id="mostNorthern">Most Northern Location:</label>
+        <label id="mostSouthern">Most Southern Location:</label>
     </div>
-    <!-- Second Cities And Communities -->
-    <div id="citiesCommunitiesID">
-        <h1>Cities and Communities</h1>
-        City Name <input id="nameInputID" type="text"><br>
-        Latitude <input id="latitudeInputID" type="text"><br>
-        Longitude <input id="longitudeInputID" type="text"><br>
-        Most recent Census <input id="populationInputID" type="text"><br>
-        <button id='createCityID'>Input City Data</button><br>
-        Global Population(based off the list)<p id="IDtotalPop"></p>
-        Most Northern Location<p id="IDmostNorthern"></p>
-        Most Southern Location<p id="IDmostSouthern"></p>
-        <div id="domBoxID" class="domBox">City List</div>
-    </div>
-
+            
     <script src="./scripts/cities.js" type="module"></script>
 </body>
 </html>

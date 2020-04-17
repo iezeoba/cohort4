@@ -1,4 +1,4 @@
-import {Community} from "./community.js";
+import {Community, City} from "./community.js";
 
 let city = new Community();
 window.addEventListener("load", loadCities);
@@ -6,18 +6,21 @@ async function loadCities() {
     let newCity = await city.getCities();
     // newCity = await city.getCities("http://127.0.0.1:5000/load");
     // newCity = await city.getCities("http://127.0.0.1:5000/all");
-    
     console.log(newCity);
 };
-let add = document.getElementById("addCity");
-add.addEventListener("click", addCity);
+// let add = document.getElementById("addCity");
+let addNewCity = document.getElementById("createCity");
+// add.addEventListener("click", addCity);
+addNewCity.addEventListener("click", addCity);
 async function addCity() {
-    let myCity = await postData("http://127.0.0.1:5000/add", {city: inputCity.value, key: 4});
+    // let myCity = await postData("http://127.0.0.1:5000/add", {city: inputCity.value, key: 4});
+    let myCity = await postData("http://127.0.0.1:5000/add", {city: idCity.value, key: 4, lat: Number(idLatitude.value), long: Number(idLongitude.value)});
     myCity = await fetch ("http://127.0.0.1:5000/all");
     let allCities = myCity.json();
     console.log(allCities);
     let iframe = document.getElementById("map");
-    iframe.src=`https://maps.google.com/maps?q=${inputCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+    // iframe.src=`https://maps.google.com/maps?q=${inputCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+    iframe.src=`https://maps.google.com/maps?q=${idCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
 }
 async function postData(URL = '', data = {}) { //postData can be used to GET or POST data. if the parameter required is only a url, it is getting. if a url and another parameter, it is posting
 

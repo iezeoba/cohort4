@@ -240,6 +240,7 @@ const data = [
 
 const me = [
     {
+        "key": 1,
         "id": 1,
         "name": "Ifeanyi Ezeoba",
         "username": "Ife",
@@ -262,8 +263,106 @@ const me = [
             "bs": "activate domestic artificial intelligence"
         }
     },
+    {
+        "key": 2,
+        "id": 1,
+        "name": "Michael Dualroyalty",
+        "username": "Mike",
+        "email": "mike@me.com",
+        "address": {
+            "street": "Hamptons View",
+            "suite": "Apt. 2018",
+            "city": "Calgary",
+            "zipcode": "123-456",
+            "geo": {
+                "lat": "-37.3152",
+                "lng": "81.1499"
+            }
+        },
+        "phone": "1-987-654-3210",
+        "website": "midual.org",
+        "company": {
+            "name": "Midual",
+            "catchPhrase": "Come up with a catchphrase",
+            "bs": "not now please"
+        }
+    }
 ]
 
 test("Testing getFirstName", () => {
-    expect(functions.getFirstName(data[0].name)).toBe("Leanne");
+    expect(functions.getFirstName(data)).toBe("Leanne Graham");
+});
+
+test('Testing getAllFirstNames', () => {
+    expect(functions.getAllFirstNames(data)).toEqual(['Leanne Graham',
+        'Ervin Howell',
+        'Clementine Bauch',
+        'Patricia Lebsack',
+        'Chelsey Dietrich',
+        'Mrs. Dennis Schulist',
+        'Kurtis Weissnat',
+        'Nicholas Runolfsdottir V',
+        'Glenna Reichert',
+        'Clementina DuBuque']);
+});
+
+// test('Testing that data received is a json file', async () => {
+//     const url = "https://jsonplaceholder.typicode.com/users";
+//     const data = await functions.postData(url);
+// });
+
+const url = 'http://127.0.0.1:5000/';
+
+test('Testing that fetch works?', async () => {
+
+    // const newMembers = [
+    //     { key: 1, name: "Steve" },
+    //     { key: 2, name: "Mia" }
+    // ];
+    // Check that the server is running and clear any data
+    let data = await functions.postData(url + 'clear');
+
+    data = await functions.postData(url + 'all');
+    expect(data.status).toEqual(200);
+    expect(data.length).toBe(0);
+
+    data = await functions.postData(url + 'add', me[0]);
+    expect(data.status).toEqual(200);
+
+    data = await functions.postData(url + 'all');
+    expect(data.status).toEqual(200);
+    expect(data.length).toBe(1);
+    expect(data[0].name).toBe("Ifeanyi Ezeoba");
+
+    // // add a second with the same key which should be an error
+    data = await functions.postData(url + 'add', me[0]);
+    expect(data.status).toEqual(400);
+
+    // // add a second which should be ok
+    data = await functions.postData(url + 'add', me[1]);
+    expect(data.status).toEqual(200);
+
+    data = await functions.postData(url + 'all');
+    expect(data.status).toEqual(200);
+    expect(data.length).toBe(2);
+    expect(data[1].name).toBe("Michael Dualroyalty");
+
+    data = await functions.postData(url + 'read', { key: 1 });
+    expect(data.status).toEqual(200);
+    expect(data.length).toBe(1);
+    expect(data[0].name).toBe("Ifeanyi Ezeoba");
+
+    data = await functions.postData(url + 'update', { key: 1, name: "Alta Ego" });
+    expect(data.status).toEqual(200);
+
+    data = await functions.postData(url + 'read', { key: 1 });
+    expect(data.status).toEqual(200);
+    expect(data.length).toBe(1);
+    expect(data[0].name).toBe("Alta Ego");
+
+    data = await functions.postData(url + 'delete', { key: 1 });
+    expect(data.status).toEqual(200);
+
+    data = await functions.postData(url + 'read', { key: 1 });
+    expect(data.status).toEqual(400);
 });
