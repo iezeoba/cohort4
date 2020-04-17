@@ -5,7 +5,7 @@ const functions = {
     },
 
     url: "https://jsonplaceholder.typicode.com/users",
-    url: "http://127.0.0.1:5000/",
+    // url: "http://127.0.0.1:5000/",
 
     getFirstName(data) {
         return (data[0].name);

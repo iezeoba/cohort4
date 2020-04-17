@@ -334,11 +334,11 @@ test('Testing that fetch works?', async () => {
     expect(data.length).toBe(1);
     expect(data[0].name).toBe("Ifeanyi Ezeoba");
 
-    // // add a second with the same key which should be an error
+    // // add same dataset again with the same key which should be an error
     data = await functions.postData(url + 'add', me[0]);
     expect(data.status).toEqual(400);
 
-    // // add a second which should be ok
+    // // add another dataset which should be ok
     data = await functions.postData(url + 'add', me[1]);
     expect(data.status).toEqual(200);
 

@@ -1,4 +1,4 @@
-import {Community, City} from "./community.js";
+import {Community, City} from "./city_community.js";
 
 let city = new Community();
 window.addEventListener("load", loadCities);
