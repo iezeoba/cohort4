@@ -315,10 +315,10 @@ const url = 'http://127.0.0.1:5000/';
 
 test('Testing that fetch works?', async () => {
 
-    // const newMembers = [
-    //     { key: 1, name: "Steve" },
-    //     { key: 2, name: "Mia" }
-    // ];
+    const newMembers = [
+        { key: 1, name: "One" },
+        { key: 2, name: "Two" }
+    ];
     // Check that the server is running and clear any data
     let data = await functions.postData(url + 'clear');
 
