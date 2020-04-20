@@ -10,12 +10,12 @@ export class City {
         return string += `${this.name} is located at latitude ${this.latitude} and longitude ${this.longitude} and has a population of about ${this.population}`;
     }
 
-    movedIn(immigrants) {
-        this.population = this.population + immigrants;
+    movedIn(population, immigrants) {
+        return population + immigrants;
     }
 
-    movedOut(exits) {
-        this.population = this.population - exits;
+    movedOut(population, exits) {
+        return population - exits;
     }
 
     howBig() {
@@ -69,54 +69,72 @@ export class Community {
     }
 
     cityFinder(cityname) {
-        let index;// = this.allCities.findIndex(city => city.name === cityname);
+        let index;
         for (let i = 0; i < this.allCities.length; i++) {
             if (cityname === this.allCities[i].name) {
-                    index = i
+                index = i
             }
         }
         return this.allCities[index];
     }
 
     whichSphere(cityname) {
-        let sphere = this.cityFinder(cityname).latitude;
-        if (sphere > 0) {
+        let lat = this.cityFinder(cityname).latitude;
+        if (lat > 0) {
             return `This location is in the Northern Hemisphere`;
-        } else if (sphere < 0) {
+        } else if (lat < 0) {
             return `This location is in the Southern Hemisphere`;
         } else {
             return "This location is on the equator";
         }
     }
-    getMostNorthern(this.allCities) {
-        let string = "";
-        return string += `${Object.values(this.allCities.reduce((a, b) => b.latitude > a.latitude ? b : a))}`;
+    getMostNorthern(arr) {
+        let arrCityLat = [];
+        for (let i = 0; i < arr.length; i++) {
+            arrCityLat[i] = arr[i].latitude;
+        }
+        let cityIndex = arrCityLat.indexOf(Math.max(...arrCityLat));
+        return arr[cityIndex].name;
     }
 
-    getMostSouthern() {
-        let string = "";
-        return string += `${Object.values(this.allCities.reduce((a, b) => b.latitude < a.latitude ? b : a))}`;
+    getMostSouthern(arr) {
+        let arrCityLat = [];
+        for (let i = 0; i < arr.length; i++) {
+            arrCityLat[i] = arr[i].latitude;
+        }
+        let cityIndex = arrCityLat.indexOf(Math.min(...arrCityLat));
+        return arr[cityIndex].name;
     }
 
-    getPopulation() {
-        let sum = 0;
-        for (var i = 0; i < this.allCities.length; i++) {
-            sum = sum + this.allCities[i].population;
-        } return sum;
+    getPopulation(city, arr) {
+        let index;
+        for (var i = 0; i < arr.length; i++) {
+            if (city == arr[i].name) {
+                index = i
+            }
+        }
+        return arr[index].population;
     }
 
     increasePopulation(cityname, amount) {
-        this.cityFinder(cityname).movedIn(amount);
-        return this.cityFinder(cityname).this.population();
+        this.cityFinder(cityname).population = this.newCity.movedIn(this.cityFinder(cityname).population, amount);
+        return this.cityFinder(cityname).population;
     }
 
     decreasePopulation(cityname, amount) {
-        this.cityFinder(local).movedOut(amount);
-        return this.cityFinder(cityname).this.population();
+        this.cityFinder(cityname).population = this.newCity.movedOut(this.cityFinder(cityname).population, amount);
+        return this.cityFinder(cityname).population;
     }
 
-    deleteCity(cityname) {
-        this.allCities.splice(this.cityFinder(cityname), 1);
+    deleteCity(cityname, arr) {
+        let index;
+        for (var i = 0; i < arr.length; i++) {
+            if (cityname == arr[i].name) {
+                index = i
+            }
+        }
+        arr.splice(index, 1);
+        return arr;
     }
 };
     // export default {Community, City}; //this collective export method is an alternative to the private export method used in this file. both are valid.
