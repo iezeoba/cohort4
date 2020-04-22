@@ -1,43 +1,41 @@
-import {Community, City} from "./city_community.js";
+import { Community, City } from "./city_community.js";
 
 let city = new Community();
 window.addEventListener("load", loadCities);
+// let addNewCity = document.getElementById("createCity");
+createCity.addEventListener("click", addCity);
+let iframe = document.getElementById("map");
+deleteCity.addEventListener("click", removeCity)
+
 async function loadCities() {
     let newCity = await city.getCities();
     // newCity = await city.getCities("http://127.0.0.1:5000/load");
     // newCity = await city.getCities("http://127.0.0.1:5000/all");
+    mostNorthern.textContent = `Most Northern Location: ${city.getMostNorthern(city.allCities)}`
+    mostSouthern.textContent = `Most Southern Location: ${city.getMostSouthern(city.allCities)}`
+    iframe.src = `https://maps.google.com/maps?q=${(newCity[0].name).toLowerCase()}&t=&z=13&ie=UTF8&iwloc=&output=embed`
     console.log(newCity);
 };
-let addNewCity = document.getElementById("createCity");
-addNewCity.addEventListener("click", addCity);
-async function addCity() {
-    let myCity = await postData("http://127.0.0.1:5000/add", {city: idCity.value, key: 4, lat: Number(idLatitude.value), long: Number(idLongitude.value)});
-    myCity = await fetch ("http://127.0.0.1:5000/all");
-    let allCities = myCity.json();
-    console.log(allCities);
-    let iframe = document.getElementById("map");
-    iframe.src=`https://maps.google.com/maps?q=${idCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
-}
-async function postData(URL = '', data = {}) { //postData can be used to GET or POST data. if the parameter required is only a url, it is getting. if a url and another parameter, it is posting
+function addCity() {
+    // let myCity = await city.postData("http://127.0.0.1:5000/add", {city: idCity.value, key: 4, lat: Number(idLatitude.value), long: Number(idLongitude.value)});
+    city.createCity(idCity.value, idLatitude.value, idLongitude.value, idPopulation.value, checkBox());
+    mostNorthern.textContent = `Most Northern Location: ${city.getMostNorthern(city.allCities)}`
+    mostSouthern.textContent = `Most Southern Location: ${city.getMostSouthern(city.allCities)}`
+    //    myCity = await fetch ("http://127.0.0.1:5000/all");
 
-    // Default options are marked with *
-    const response = await fetch(URL, {
-        method: 'POST',     // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors',       // no-cors, *cors, same-origin
-        cache: 'no-cache',  // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow',         // manual, *follow, error
-        referrer: 'no-referrer',    // no-referrer, *client
-        body: JSON.stringify(data)  // body data type must match "Content-Type" header
-    });
 
-    const json = await response.json();    // parses JSON response into native JavaScript objects
-    json.status = response.status;
-    json.statusText = response.statusText;
-    // console.log(json, typeof(json));
-    return json;
+    iframe.src = `https://maps.google.com/maps?q=${idCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
 }
+
+function checkBox() {
+    if (saveCity.checked) {
+        return true
+    } else {
+        return false
+    }
+}
+
+async function removeCity() {
+    await city.deleteCity(delCity.value, city.allCities);
+}
+

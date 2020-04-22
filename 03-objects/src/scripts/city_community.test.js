@@ -1,12 +1,30 @@
 import { City, Community } from './city_community.js';
 // import { Community } from './city_community.js';
 
-test("Testing movedIn", () => {
+test("Testing show",async () => {
     let city = new Community();
-    city.createCity('Lethbridge', 49.69, -112.84, 700);
-    city.createCity('Calgary', 51.04, -114.07, 189000);
-    city.createCity('Medicine Hat', 50.02, -110.70, 2500);
-    expect(city.movedIn(population, 2000)).toBe(3);
+    let newCity = new City();
+    let cityArr = [];
+    cityArr.push(await city.createCity('Lethbridge', 49.69, -112.84, 700));
+    cityArr.push(await city.createCity('Calgary', 51.04, -114.07, 189000));
+    cityArr.push(await city.createCity('Medicine Hat', 50.02, -110.70, 2500));
+   
+    expect(newCity.show("Lethbridge",cityArr)).toBe("Lethbridge is located at latitude 49.69 and longitude -112.84 and has a population of about 700");
+    expect(newCity.show("Calgary",cityArr)).toBe("Calgary is located at latitude 51.04 and longitude -114.07 and has a population of about 189000");
+    expect(newCity.show("Medicine Hat",cityArr)).toBe("Medicine Hat is located at latitude 50.02 and longitude -110.70 and has a population of about 2500");
+});
+
+test("Testing howBig",async () => {
+    let city = new Community();
+    let newCity = new City();
+    let cityArr = [];
+    cityArr.push(await city.createCity('Lethbridge', 49.69, -112.84, 700));
+    cityArr.push(await city.createCity('Calgary', 51.04, -114.07, 189000));
+    cityArr.push(await city.createCity('Medicine Hat', 50.02, -110.70, 2500));
+   
+    expect(newCity.howBig("Lethbridge",cityArr)).toBe("Lethbridge is a Village");
+    expect(newCity.howBig("Calgary",cityArr)).toBe("Calgary is a City");
+    expect(newCity.howBig("Medicine Hat",cityArr)).toBe("Medicine Hat is a Town");
 });
 
 test("Testing nextKey", () => {
