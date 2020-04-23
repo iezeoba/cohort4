@@ -23,7 +23,6 @@ function addCity() {
     mostSouthern.textContent = `Most Southern Location: ${city.getMostSouthern(city.allCities)}`
     //    myCity = await fetch ("http://127.0.0.1:5000/all");
 
-
     iframe.src = `https://maps.google.com/maps?q=${idCity.value}&t=&z=13&ie=UTF8&iwloc=&output=embed`
 }
 

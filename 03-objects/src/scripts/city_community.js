@@ -181,6 +181,12 @@ export class Community {
         jindex = (this.allCities[index].key).toString();
         arr.splice(index, 1);
         console.log(jindex);
+        // let deleteCity = await this.postData(this.url + 'delete', {key: jindex}); 
+        // deleteCity = await postDatafetch(this.url + 'all');
+        // // let response = deleteCity.json();
+        // console.log(deleteCity);
+        // return arr;
+        // ---- line 184 - 189 was the initial code now duplicated and modified from 190 - 195 ------
         let deleteCity = await this.postData(this.url + 'delete', {key: jindex}); 
         deleteCity = await postDatafetch(this.url + 'all');
         // let response = deleteCity.json();

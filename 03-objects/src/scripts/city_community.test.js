@@ -89,11 +89,11 @@ test("Testing getPopulation", async () => {
     expect(await city.getPopulation("Calgary", cityArr)).toBe(189000);
     expect(await city.getPopulation("Lethbridge", cityArr)).toBe(700);
     expect(await city.getPopulation("Medicine Hat", cityArr)).toBe(2500);
-    // Testing increasePopulation()
+    // Testing increasePopulation() using movedIn()
     expect(await city.increasePopulation("Calgary", 1000)).toBe(190000);
     expect(await city.increasePopulation("Lethbridge", 200)).toBe(900);
     expect(await city.increasePopulation("Medicine Hat", 300)).toBe(2800);
-    // Testing decreasePopulation()
+    // Testing decreasePopulation() using movedOut()
     expect(await city.decreasePopulation("Calgary", 2000)).toBe(188000);
     expect(await city.decreasePopulation("Lethbridge", 300)).toBe(600);
     expect(await city.decreasePopulation("Medicine Hat", 100)).toBe(2700);
