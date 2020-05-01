@@ -117,7 +117,7 @@ def load():
 	return "<h1>EvolveU test</h1> <h2>" + str(len(data)) + " records Loaded</h2>"
 
 
-@app.route("/save", methods = ['GET'])
+@app.route("/save", methods = ['POST'])
 def save():
 	global data
 	with open('data.json', 'w') as outfile:
