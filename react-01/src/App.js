@@ -11,9 +11,11 @@ class App extends React.Component {
     super();
     this.counter = 21;
     this.state = {
-      myState: "TBD"
+      myState: "TBD",
+      myHeader: <MyComponent />
     };
 }
+
 onPushMe = () => {
   console.log("You pushed me");
   this.counter++;
@@ -21,16 +23,18 @@ onPushMe = () => {
   this.setState({
     myState: "now:" + this.counter
   });
+  ((this.counter % 2) > 0) ? this.setState({myHeader:<OddComponent />}) : this.setState({myHeader: <EvenComponent />});
 }
+
 render() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        {this.state.myHeader}
         <h1>Hello World</h1>
         <h2>I am in control of this application and my name is Ifeanyi {this.state.myState}</h2>
         <button onClick={this.onPushMe}>Push Me</button>
-        <MyComponent />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
