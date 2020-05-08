@@ -2,13 +2,21 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+//function App() {
+class App extends React.Component {  
+  constructor() { 
+    super();
+    this.counter = 21;
+}
+
+render() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello World</h1>
-        <h2>I am in control of this application and my name is Ifeanyi</h2>
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>Hello World</h1>
+        <h2>I am in control of this application and my name is Ifeanyi {this.counter}</h2>
+        <button onClick={this.onPushMe}>Push Me</button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -22,6 +30,7 @@ function App() {
       </header>
     </div>
   );
+}
 }
 
 export default App;
