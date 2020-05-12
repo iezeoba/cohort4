@@ -1,12 +1,17 @@
 import React from 'react';
-import unicornlogo from './unicornlogo.svg';
+import logo from './logo.svg';
+import dolphin from './dolphin.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <img src={dolphin} className="My-logo" alt="logo" />
+      <img src={dolphin} className="My-logo" alt="logo" />      
       <header className="App-header">
-        <img src={unicornlogo} className="App-logo" alt="logo" />
+      <h1>Hello World</h1>
+        <img src={logo} className="App-logo" alt="logo" />
+        
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
