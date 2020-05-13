@@ -8,7 +8,7 @@
 }
 
 .My-logo {
-  height: 20vmin;
+  height: 5vmin;
   pointer-events: auto;
 }
 
@@ -21,7 +21,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
   .My-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: My-logo-spin infinite 25s linear;
   }
 }
 
@@ -56,4 +56,8 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.My-logo:hover {
+background: cornflowerblue;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import dolphin from './dolphin.svg';
+import dolphin from './svg/dolphin.svg';
 import './App.css';
 
 function App() {
