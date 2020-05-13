@@ -10,10 +10,22 @@
 .My-logo {
   height: 5vmin;
   pointer-events: auto;
+  padding: 5px;
+}
+
+.My-logo-rev {
+  height: 5vmin;
+  pointer-events: auto;
+  padding: 5px;
 }
 
 .My-logo:hover {
-  fill: #61dafb;
+  filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+  color: #00EE00;
+}
+
+.My-logo-rev:hover {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,6 +34,9 @@
   }
   .My-logo {
     animation: My-logo-spin infinite 25s linear;
+  }
+  .My-logo-rev {
+    animation: My-logo-rev-spin infinite 10s linear;
   }
 }
 
@@ -51,6 +66,15 @@
 
 @keyframes My-logo-spin {
   from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes My-logo-rev-spin {
+  from {
     transform: rotate(360deg);
   }
   to {
@@ -58,6 +82,11 @@
   }
 }
 
-.My-logo:hover {
-background: cornflowerblue;
+img {
+  transform: scale(1.2);
+  transition: transform 2s;
+}
+
+img:hover {
+  transform: scale(1.2);
 }
