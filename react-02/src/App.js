@@ -6,15 +6,49 @@ import maps from './svg/maps.svg';
 import gears from './svg/gears.svg';
 import './App.css';
 
-function App() {
+// function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+        this.state = {
+        value : "Welcome"
+    }
+    this.getValue = this.getValue.bind(this)
+}
+getValue(event) {
+  if (event.target.id === "id-menu") {
+  this.setState({
+    value: "This is the menu icon"
+  });
+} 
+  else if (event.target.id === "id-lego") {
+  this.setState({
+    value: "This is the game icon"
+  });
+}
+  else if (event.target.id === "id-maps") {
+  this.setState({
+    value: "This is the map icon"
+  });
+}
+  else if (event.target.id === "id-gears") {
+  this.setState({
+    value: "This is the settings icon"
+  });
+}
+}
+
+
+render() {
   return (
     <div className="App">
-      <img src={menu} className="My-logo-rev" alt="menu-logo" />
-      <img src={lego} className="My-logo" alt="lego-logo" />
-      <img src={maps} className="My-logo" alt="maps-logo" /> 
-      <img src={gears} className="My-logo" alt="gears-logo" />     
+      <img src={menu} className="My-logo-rev" id="id-menu" alt="menu-logo" onClick={this.getValue} value={this.state.value} />
+      <img src={lego} className="My-logo" id="id-lego" alt="lego-logo" onClick={this.getValue} value={this.state.value} />
+      <img src={maps} className="My-logo" id="id-maps" alt="maps-logo" onClick={this.getValue} value={this.state.value}/> 
+      <img src={gears} className="My-logo" id="id-gears" alt="gears-logo" onClick={this.getValue} value={this.state.value}/>     
       <header className="App-header">
       <h1>Hello World</h1>
+      <p>{this.state.value}</p>
         <img src={logo} className="App-logo" alt="logo" />
         
         <p>
@@ -32,5 +66,6 @@ function App() {
     </div>
   );
 }
+};
 
 export default App;
