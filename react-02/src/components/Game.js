@@ -1,16 +1,5 @@
 import React from "react";
 
-class TicTacToe extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <h1>This is the EvenComponent {this.props.whatToSay}</h1>
-            </div>
-        )
-    }
-}
-
 class Square extends React.Component {
     render() {
         return (
@@ -66,7 +55,7 @@ class Game extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <Game />, document.getElementById("root")
-);
-export default TicTacToe
+// ReactDOM.render(
+//     <Game />, document.getElementById("root")
+// );
+export default Game
