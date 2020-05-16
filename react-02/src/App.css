@@ -82,11 +82,11 @@
   }
 }
 
-/* img {
+img {
   transform: scale(1.2);
   transition: transform 2s;
 }
 
 img:hover {
   transform: scale(1.2);
-} */
+}

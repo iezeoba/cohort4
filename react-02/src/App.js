@@ -16,14 +16,19 @@ class App extends React.Component {
     this.getValue = this.getValue.bind(this)
 }
 getValue(event) {
-  if (event.target.id === "id-menu") {
+  if (event.target.id === "id-reactlogo") {
+    this.setState({
+      value: "This is the react icon"
+    });
+  } 
+  else if (event.target.id === "id-menu") {
   this.setState({
     value: "This is the menu icon"
   });
 } 
   else if (event.target.id === "id-lego") {
   this.setState({
-    value: "This is the game icon"
+    value: "This is the tic-tac-toe game"
   });
 }
   else if (event.target.id === "id-maps") {
@@ -42,6 +47,7 @@ getValue(event) {
 render() {
   return (
     <div className="App">
+      <img src={logo} className="My-logo" id="id-reactlogo" alt="react-logo" onClick={this.getValue} value={this.state.value}/>
       <img src={menu} className="My-logo-rev" id="id-menu" alt="menu-logo" onClick={this.getValue} value={this.state.value} />
       <img src={lego} className="My-logo" id="id-lego" alt="lego-logo" onClick={this.getValue} value={this.state.value} />
       <img src={maps} className="My-logo" id="id-maps" alt="maps-logo" onClick={this.getValue} value={this.state.value}/> 
