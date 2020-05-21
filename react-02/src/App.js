@@ -1,11 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import menu from './svg/menu.svg';
-import lego from './svg/lego.svg';
-import maps from './svg/maps.svg';
-import gears from './svg/gears.svg';
 import './App.css';
 import Game from './components/Game';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 
 // function App() {
 class App extends React.Component {
@@ -17,10 +14,14 @@ class App extends React.Component {
     this.getValue = this.getValue.bind(this)
   }
   getValue(event) {
+    let idHome = document.getElementById("home");
+    let idGame = document.getElementById("game");
     if (event.target.id === "id-reactlogo") {
       this.setState({
         value: "This is the react icon"
       });
+      idHome.style.display = "block";
+      idGame.style.display = "none";
     }
     else if (event.target.id === "id-menu") {
       this.setState({
@@ -31,6 +32,8 @@ class App extends React.Component {
       this.setState({
         value: "This is the tic-tac-toe game"
       });
+      idHome.style.display = "none";
+      idGame.style.display = "block";
     }
     else if (event.target.id === "id-maps") {
       this.setState({
@@ -44,34 +47,20 @@ class App extends React.Component {
     }
   }
 
-
   render() {
     return (
       <div className="App">
-        <img src={logo} className="My-logo" id="id-reactlogo" alt="react-logo" onClick={this.getValue} value={this.state.value} />
-        <img src={menu} className="My-logo-rev" id="id-menu" alt="menu-logo" onClick={this.getValue} value={this.state.value} />
-        <img src={lego} className="My-logo" id="id-lego" alt="lego-logo" onClick={this.getValue} value={this.state.value} />
-        <img src={maps} className="My-logo" id="id-maps" alt="maps-logo" onClick={this.getValue} value={this.state.value} />
-        <img src={gears} className="My-logo" id="id-gears" alt="gears-logo" onClick={this.getValue} value={this.state.value} />
-        <header className="App-header">
+        <div>
+          <Navbar onClick={this.getValue} />
+        </div>
+        <div id="home" style={{ display: "block" }}>
+          <Home value={this.state.value} />
+        </div>
+        <div id="game" style={{ display: "none" }}>
           <Game />
-          <h1>Hello World</h1>
-          <p>{this.state.value}</p>
-          <img src={logo} className="App-logo" alt="logo" />
-
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Learn React</a>
-        </header>
+        </div>
       </div>
     );
   }
 };
-
 export default App;

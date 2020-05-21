@@ -82,14 +82,12 @@
   }
 }
 
-img, .My-logo:hover, .My-logo-rev:hover {
+.clImages:hover {
   transform: scale(1.2);
-  transition: transform 2s;
+  transition: transform 1s;
+  cursor: pointer;
 }
 
-img:hover, .My-logo:hover, .My-logo-rev:hover {
-  transform: scale(1.2);
-}
 
 /* TIC-TAC-TOE */
 body {
