@@ -20,7 +20,7 @@ const functions = {
         setTimeout(() => {          // Simulates a fetch
             console.log("Two");
         }, 1 * 1000);
-        console.log('Three');       // We have a problem Huston
+        console.log('Three');       // We have a problem Houston
     },
 
     async showDelaySolution() {
@@ -49,6 +49,7 @@ const functions = {
             throw (error);
         }
     },
+    
     async workWithData() {
         const data = await functions.getUsers();
         console.log(functions.getFirstName(data));
