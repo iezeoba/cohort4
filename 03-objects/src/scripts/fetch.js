@@ -78,5 +78,4 @@ const functions = {
         return json;
     }
 };
-
 export default functions;

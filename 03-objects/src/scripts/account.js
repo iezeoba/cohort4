@@ -24,7 +24,7 @@ export class Account {
     }
     transfer(amt) {
         let amount = parseFloat(amt);
-        if (this.withdraw(amount) && this.deposit(amount)) {
+        if (this._isAllowed(amount)) {
             this.balance -= amount;
             console.log(`Transfer: ${amount} has been moved from ${this.name} to ${this.name}`);
             return (this.balance).toFixed(2);

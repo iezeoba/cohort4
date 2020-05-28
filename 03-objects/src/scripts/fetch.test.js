@@ -1,4 +1,5 @@
 import functions from "./fetch.js";
+global.fetch = require('node-fetch');
 
 test("Testing the plumbing!", () => {
     console.log("Testing the unit test plumbing!");
@@ -315,12 +316,7 @@ const url = 'http://127.0.0.1:5000/';
 
 test('Testing that fetch works?', async () => {
 
-    const newMembers = [
-        { key: 1, name: "One" },
-        { key: 2, name: "Two" }
-    ];
-    // Check that the server is running and clear any data
-    let data = await functions.postData(url + 'clear');
+    let data = await functions.postData(url + 'clear'); // This checks that the server is running and clears any data cached
 
     data = await functions.postData(url + 'all');
     expect(data.status).toEqual(200);
@@ -338,7 +334,7 @@ test('Testing that fetch works?', async () => {
     data = await functions.postData(url + 'add', me[0]);
     expect(data.status).toEqual(400);
 
-    // // add another dataset which should be ok
+    // // add a different dataset which should be ok
     data = await functions.postData(url + 'add', me[1]);
     expect(data.status).toEqual(200);
 
