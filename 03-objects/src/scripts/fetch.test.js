@@ -294,7 +294,7 @@ test("Testing getFirstName", () => {
     expect(functions.getFirstName(data)).toBe("Leanne Graham");
 });
 
-test('Testing getAllFirstNames', () => {
+test('Testing getAllFirstNames', () => {  //should return an array of first names
     expect(functions.getAllFirstNames(data)).toEqual(['Leanne Graham',
         'Ervin Howell',
         'Clementine Bauch',
@@ -362,3 +362,13 @@ test('Testing that fetch works?', async () => {
     data = await functions.postData(url + 'read', { key: 1 });
     expect(data.status).toEqual(400);
 });
+
+// test("Testing Fetch - delay in settimeout", () => {
+//     expect(functions.showDelayProblem()[0]).toBe('One');
+//     expect(functions.showDelayProblem()[1]).toBe('Three');
+// });
+
+// test("Testing workWithData", async () => {
+//     let d = await functions.workWithData();
+//     expect(d.length).toBe(10);
+// });

@@ -1,5 +1,6 @@
 import { City, Community } from './city_community.js';
 // import { Community } from './city_community.js';
+global.fetch = require('node-fetch');
 
 test("Testing show",async () => {
     let city = new Community();
