@@ -366,8 +366,8 @@ test('Testing that fetch works?', async () => {
 // });
 
 // test("Testing workWithData", async () => {
-//     let d = await functions.workWithData();
-//     expect(d.length).toBe(10);
+//     let data = await functions.workWithData();
+//     expect(data.length).toBe(10);
 // });
 
 

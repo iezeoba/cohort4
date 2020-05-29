@@ -39,7 +39,7 @@ test("Testing createCity", () => {
     expect(city.allCities.length).toBe(1);
     city.createCity('Calgary', 51.04, -114.07, 189000);
     city.createCity('Medicine Hat', 50.02, -110.70, 2500);
-    console.log(city.allCities);
+    //console.log(city.allCities);
     expect(city.allCities.length).toBe(3);
 });
 
@@ -111,7 +111,6 @@ test("Testing deleteCity", async () => {
     expect(newCityArr[0].name).toBe("Lethbridge");
     expect(newCityArr[1].latitude).toBe(50.02);
 });
-
 
 
 

@@ -83,13 +83,13 @@ export class Community {
             data = await this.postData(this.url + "save", city);
             data = await fetch("http://127.0.0.1:5000/all")
             let allCities = await data.json();
-            console.log(allCities);
+            //console.log(allCities);
             return allCities;
         } else {
             let data = await this.postData(this.url + "add", city);
             data = await fetch("http://127.0.0.1:5000/all")
             let allCities = await data.json();
-            console.log(allCities);
+            //console.log(allCities);
             return allCities;
         }
 
@@ -104,7 +104,7 @@ export class Community {
         city.longitude = Number(longitude);
         city.population = Number(population);
         city.key = ++key;
-        console.log(city.key)
+        //console.log(city.key)
         this.allCities.push(city);
         this.addCityToServer(city, checkbox);
         return city
@@ -173,28 +173,23 @@ export class Community {
 
     async deleteCity(cityname, arr) {
         let index, jindex;
-                for (var i = 0; i < arr.length; i++) {
+        for (var i = 0; i < arr.length; i++) {
             if (cityname == arr[i].name) {
                 index = i
             }
         }
         jindex = (this.allCities[index].key).toString();
         arr.splice(index, 1);
-        console.log(jindex);
-        // let deleteCity = await this.postData(this.url + 'delete', {key: jindex}); 
-        // deleteCity = await postDatafetch(this.url + 'all');
-        // // let response = deleteCity.json();
-        // console.log(deleteCity);
-        // return arr;
-        // ---- line 184 - 189 was the initial code now duplicated and modified from 190 - 195 ------
-        let deleteCity = await this.postData(this.url + 'delete', {key: jindex}); 
-        deleteCity = await postDatafetch(this.url + 'all');
-        // let response = deleteCity.json();
-        console.log(deleteCity);
+        //console.log(jindex);
+
+        const getKey = this.allCities[index];
+        let deleteCity = await this.postData(this.url + 'delete', getKey);
+        deleteCity = await fetch(this.url + 'all');
+        let response = await deleteCity.json();
+        //console.log(response);
         return arr;
     }
     async postData(URL = '', data = {}) { //postData can be used to GET or POST data. if the parameter required is only a url, it is getting. if a url and another parameter, it is posting
-
         // Default options are marked with *
         const response = await fetch(URL, {
             method: 'POST',     // *GET, POST, PUT, DELETE, etc.
@@ -217,4 +212,4 @@ export class Community {
         return json;
     }
 };
-    // export default {Community, City}; //this collective export method is an alternative to the private export method used in this file. both are valid.
+// export default {Community, City}; //this collective export method is an alternative to the private export method used in this file. both are valid.
