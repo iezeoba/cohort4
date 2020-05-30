@@ -3,6 +3,7 @@ import './App.css';
 import Game from './components/Game';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Account from './components/Account';
 
 // function App() {
 class App extends React.Component {
@@ -16,17 +17,14 @@ class App extends React.Component {
   getValue(event) {
     let idHome = document.getElementById("home");
     let idGame = document.getElementById("game");
+    let idAccount = document.getElementById("account");
     if (event.target.id === "id-reactlogo") {
       this.setState({
         value: "This is the react icon"
       });
       idHome.style.display = "block";
       idGame.style.display = "none";
-    }
-    else if (event.target.id === "id-menu") {
-      this.setState({
-        value: "This is the menu icon"
-      });
+      idAccount.style.display = "none";
     }
     else if (event.target.id === "id-lego") {
       this.setState({
@@ -34,6 +32,15 @@ class App extends React.Component {
       });
       idHome.style.display = "none";
       idGame.style.display = "block";
+      idAccount.style.display = "none";
+    }
+    else if (event.target.id === "id-menu") {
+      this.setState({
+        value: "This is the menu icon"
+      });
+      idHome.style.display = "none";
+      idGame.style.display = "none";
+      idAccount.style.display = "block";
     }
     else if (event.target.id === "id-maps") {
       this.setState({
@@ -58,6 +65,9 @@ class App extends React.Component {
         </div>
         <div id="game" style={{ display: "none" }}>
           <Game />
+        </div>
+        <div id="account" style={{ display: "none" }}>
+          <Account />
         </div>
       </div>
     );
