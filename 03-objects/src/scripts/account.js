@@ -22,7 +22,7 @@ export class Account {
             return "Insufficient balance";
         }
     }
-    transfer(amt) {
+    transfer(amt) { //there is no need for this method as it duplicates the function of the withdraw method 
         let amount = parseFloat(amt);
         if (this._isAllowed(amount)) {
             this.balance -= amount;
