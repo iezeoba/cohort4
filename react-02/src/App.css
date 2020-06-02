@@ -152,12 +152,20 @@ body {
   margin-left: 10px;   
 }
 
-.clAcctGen, .clTransactBar, .clAcctCard { /*batched all parent divs to be returned here*/
+.clAcctContainer {
   margin: 5px 5px 5px 5px;
   border-width: 1px;
   border-style: solid;
   height: auto; 
 }
+
+/*batched all parent divs to be returned here*//*suspended applying these styles ifo of styles on line 155*/
+/* .clAcctGen, .clTransactBar, .clAcctCard { 
+  margin: 5px 5px 5px 5px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+} */
 
 #idAcctGen, #idTrxBar, #idAcctCard {
   margin: 10px 10px 10px 10px;
