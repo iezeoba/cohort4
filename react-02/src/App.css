@@ -89,7 +89,7 @@
 }
 
 
-/* TIC-TAC-TOE */
+/* ---------- TIC-TAC-TOE ---------- */
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
@@ -139,4 +139,55 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+/* ---------- BANK APP ACCOUNT ---------- */
+body {
+  padding:0;
+  margin: 0;
+  background-color: aliceblue;
+}
+
+#h1 {
+  margin-left: 10px;   
+}
+
+.clAcctGen, .clTransactBar, .clAcctCard { /*batched all parent divs to be returned here*/
+  margin: 5px 5px 5px 5px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+}
+
+#idAcctGen, #idTrxBar, #idAcctCard {
+  margin: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+  padding: 5px 5px 5px 5px;
+}
+
+/* #idTrxBar {  //batched with similar elements on line 162
+  margin: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+  padding: 5px 5px 5px 5px;
+} */
+
+/* #idAcctCard {  //batched with similar elements on line 162
+  margin: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+  padding: 5px 5px 5px 5px;
+} */
+
+.clAcctInfo {
+  margin: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  height: 150px; 
+  width: 150px;
+  padding: 5px 5px 5px 5px; 
 }
