@@ -3,7 +3,7 @@ import './App.css';
 import Game from './components/Game';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Account from './components/BankApp/Account';
+import Account from './components/BankAppComponents/BankAppComp';
 
 // function App() {
 class App extends React.Component {
