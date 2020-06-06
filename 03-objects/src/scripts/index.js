@@ -10,8 +10,8 @@ function newAccount() {
     // ---------- USER DOES NOT EXIST AND HAS NO ACCOUNT ----------
     if (Object.keys(newUser).includes("name") == false) {
         if (dropdown.value == "Checking Account") {
-            newUser.name = acctName.value;
-            newUser.CheckingAccount = 0;
+            newUser.name = acctName.value; //"name" key is declared here on the fly to represent the "name" prop (from the constructor) and initialized with the user input from "acctName.value".
+            newUser.CheckingAccount = 0; //"checkingAccount" key is declared here on the fly to represent the "balance" prop (from the constructor) and initialized with a value of zero. It also references the particular instance of {Account}.
         } else if (dropdown.value == "Savings Account") {
             newUser.name = acctName.value;
             newUser.SavingsAccount = 0;

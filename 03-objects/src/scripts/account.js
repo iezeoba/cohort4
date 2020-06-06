@@ -35,14 +35,14 @@ export class Account {
             return "Insufficient balance";
         }
     }
-    //     return false;
-    // }
+
     _isPositive(amount) {
         if (amount < 0) {
             return false;
         }
         return true;
     }
+
     _isAllowed(amount) {
         if (this._isPositive(amount) && this.balance - amount >= 0) {
             return true;
@@ -56,13 +56,12 @@ export class Account {
     // Add methods
 // }
 // const account1 = new Account("Ifeanyi Ezeoba", 100);
+
 // export class AccountController {
 //     constructor() {
 //         this.bankaccounts = [];
 //     }
 // }
-// // export {Account, AccountController};
-
 // const account1 = new Account ("Ifeanyi Ezeoba", 100);
 // console.log(account1);
 
