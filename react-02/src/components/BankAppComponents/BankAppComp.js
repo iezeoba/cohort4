@@ -2,7 +2,7 @@ import React from 'react';
 import AccountGenerator from "./AccountGeneratorComp.js"
 import TransactBar from "./TransactBarComp.js"
 import AccountCard from './AccountCardComp.js';
-import { Account } from './Account.js'
+import { Account } from '../../business/Account.js'
 
 class BankApp extends React.Component {
     constructor(props) {
