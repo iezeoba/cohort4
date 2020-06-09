@@ -99,23 +99,55 @@ class AccountController {
         }
     }
 
-    PerformDeposit(key, amt) {
+    performDeposit(key, amt) {
         const SelectedAcct = this.getAccount(key);
         SelectedAcct.deposit(amt);
     }
 
-    PerformWithdraw(key, amt) {
+    performWithdraw(key, amt) {
         const SelectedAcct = this.getAccount(key);
         SelectedAcct.withdraw(amt);
     }
 
-    PerformDelete(key, arr) {
-        key = this.getAccount(key);
-        arr = this.bankaccounts;
-        arr.splice(key, 1);
-        return arr;
+    performDelete(key) {
+        let account = this.getAccount(key);
+        console.log(account);
+        let index = this.bankaccounts.indexOf(account)
+        console.log(index);
+        this.bankaccounts.splice(index, 1);
+        console.log(this.bankaccounts);
+        //return this.bankaccounts;
     }
-}
+
+    totalBalance() {
+        //let total = this.bankaccounts.reduce(function (a, b) { return a + b.balance }, 0); //OR use
+        let total = 0;
+        for (var i = 0; i < this.bankaccounts.length; i++) {
+            total += this.bankaccounts[i].balance;
+        }
+        return total;
+    }
+
+    getHighestBalance() {
+        let max = 0;
+        for (var i = 0; i < this.bankaccounts.length; i++) {
+            if (this.bankaccounts[i].balance > max) {
+                max = this.bankaccounts[i].balance;
+            }
+        }
+        return max;
+    }
+
+    getLowestBalance() {
+        let min = this.bankaccounts[0].balance;
+        for (var i = 1; i < this.bankaccounts.length; i++) {
+            if (this.bankaccounts[i].balance < min) {
+                min = this.bankaccounts[i].balance;
+            }
+        }
+        return min;
+    }
+};
 export { Account, AccountController };
 /*
 class AccountController
