@@ -4,14 +4,11 @@ class AccountCard extends React.Component {
 
     render() {
         const accountItem = this.props.details.map((items, index) =>
-            <AccountList key={index} value={items} />
+            <AccountList key={index} value={items} handleGetAccount={this.props.handleGetAccount} />
         )
         return (
             <div className="clAcctCard">
                 {accountItem}
-
-
-
             </div>
         );
     }
@@ -19,12 +16,11 @@ class AccountCard extends React.Component {
 export default AccountCard
 
 function AccountList(props) {
-    const accountType = Object.keys(props.value)
     return (
-        <div className="clAcctInfoCard">
+        <div id={props.value.acctType} className="clAcctInfoCard" onClick={props.handleGetAccount}>
             <p>Name: {props.value.name}</p>
-            <p>Type: {accountType[1]}</p>
-            <p>Balance: {props.value[accountType[1]]}</p>
+            <p>Type: {props.value.acctType}</p>
+            <p>Balance: {props.value.balance}</p>
         </div>
     )
 }

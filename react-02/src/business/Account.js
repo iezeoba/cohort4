@@ -6,22 +6,6 @@ class Account {
         this.balance = balance;
     }
 
-    accountNameExists(name) {
-        for (let i = 0; i < this.allAccounts.length; i++) {
-            if (name === this.allAccounts[i].name) {
-                return true
-            }
-        } return false
-    }
-
-    accountTypeExists(type) {
-        for (let i = 0; i < this.allAccounts.length; i++) {
-            if (Object.keys(this.allAccounts[i]).includes(type) === true) {
-                return true
-            }
-        } return false
-    }
-
     updateAccount(name, acctType) {
         let index = 0;
         for (let i = 0; i < this.allAccounts.length; i++) {
@@ -146,6 +130,22 @@ class AccountController {
             }
         }
         return min;
+    }
+
+    accountNameExists(name) {
+        for (let i = 0; i < this.bankaccounts.length; i++) {
+            if (name === this.bankaccounts[i].name) {
+                return true
+            }
+        } return false
+    }
+
+    accountTypeExists(type) {
+        for (let i = 0; i < this.bankaccounts.length; i++) {
+            if (type === this.bankaccounts[i].acctType) {
+                return true
+            }
+        } return false
     }
 };
 export { Account, AccountController };

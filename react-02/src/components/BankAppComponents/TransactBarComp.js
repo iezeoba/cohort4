@@ -7,7 +7,7 @@ class TransactBar extends React.Component {
                 <div id="idTrxBar">
                     {/* z<span>Account <select id="dropdownTrxn" name="acctsTrxn"></select> */}
                     <span className="clSpan">
-                        <input id="idTrxFrom" placeholder="Select Account" onChange={this.props.trxFromSelected} />
+                        <input id="idTrxFrom" placeholder="Select Account" value={this.props.trxFromSelected} readOnly />
                         <input id="idTrxAmount" type="number" required placeholder="Enter amount" onChange={this.props.TrxAmountInput} />
                     </span>
                     <button id="idDeposit" onClick={this.props.handleDeposit}>Deposit</button>
