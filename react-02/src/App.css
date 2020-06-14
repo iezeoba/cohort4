@@ -180,7 +180,7 @@ body {
   height: auto; 
 } */
 
-#idAcctGen, #idTrxBar, #idAcctCard {
+#idAcctGen, #idTrxBar, #idAcctCard, #idAcctEnquiry {
   margin: 10px 10px 10px 10px;
   border-width: 1px;
   border-style: solid;
@@ -211,7 +211,8 @@ body {
   border-style: solid;
   height: 150px; 
   width: 150px;
-  padding: 5px 5px 5px 5px; 
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
 }
 
 .clAcctCard {
@@ -222,4 +223,10 @@ body {
   border-style: solid;
   height: auto; 
   padding: 5px 5px 5px 5px;
+}
+
+.clBtn {
+  margin: 10px;
+  border-radius: 5px;
+  background-color: skyblue;
 }
