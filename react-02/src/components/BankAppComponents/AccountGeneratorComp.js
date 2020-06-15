@@ -11,7 +11,7 @@ class AccountGenerator extends React.Component {
                         Enter Account Name <input id="acctName" onChange={this.props.acctNameChange} />
                         Enter Account Type <input id="acctType" onChange={this.props.acctTypeChange} />
                     </span>
-                    <button id="createAcct" onClick={this.props.createAcct}>Create Account</button>
+                    <button id="createAcct" className="clBtn" onClick={this.props.createAcct}>Create Account</button>
                 </div>
             </div>
         );

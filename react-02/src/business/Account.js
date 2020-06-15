@@ -95,11 +95,11 @@ class AccountController {
 
     performDelete(key) {
         let account = this.getAccount(key);
-        console.log(account);
+        //console.log(account);
         let index = this.bankaccounts.indexOf(account)
-        console.log(index);
+        //console.log(index);
         this.bankaccounts.splice(index, 1);
-        console.log(this.bankaccounts);
+        //console.log(this.bankaccounts);
         //return this.bankaccounts;
     }
 
@@ -113,7 +113,7 @@ class AccountController {
     }
 
     getHighestBalance() {
-        let max = 0;
+        let max = 0; // assuming max to be zero will fail if there are -ve balances
         for (var i = 0; i < this.bankaccounts.length; i++) {
             if (this.bankaccounts[i].balance > max) {
                 max = this.bankaccounts[i].balance;

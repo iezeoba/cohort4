@@ -10,8 +10,8 @@ class TransactBar extends React.Component {
                         <input id="idTrxFrom" placeholder="Select Account" value={this.props.trxFromSelected} readOnly />
                         <input id="idTrxAmount" type="number" required placeholder="Enter Amount" onChange={this.props.TrxAmountInput} />
                     </span>
-                    <button id="idDeposit" onClick={this.props.handleDeposit}>Deposit</button>
-                    <button id="idWithdraw" onClick={this.props.handleWithdraw}>Withdraw</button>
+                    <button id="idDeposit" className="clBtn" onClick={this.props.handleDeposit}>Deposit</button>
+                    <button id="idWithdraw" className="clBtn" onClick={this.props.handleWithdraw}>Withdraw</button>
                     {/* </span> */}
                 </div>
             </div>

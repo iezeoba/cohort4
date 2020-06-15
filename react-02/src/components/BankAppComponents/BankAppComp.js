@@ -15,6 +15,7 @@ class BankApp extends React.Component {
             acctType: "",
             idTrxFrom: "",
             idTrxAmount: "",
+            idDelAcct: "",
             idEnquiryResult: ""
         }
         this.myAcctController = new AccountController();
@@ -69,6 +70,12 @@ class BankApp extends React.Component {
         })
     }
 
+    handleRetrieveForDelete = (e) => { //This method was no longer used//handleRetrieveAccount sufficed
+        this.setState({
+            idDelAcct: e.target.id
+        })
+    }
+
     handleDeposit = () => {
         for (var i = 0; i < this.myAcctController.bankaccounts.length; i++) {
             if (this.state.idTrxFrom === this.myAcctController.bankaccounts[i].acctType) {
@@ -94,24 +101,34 @@ class BankApp extends React.Component {
     handleTotalBalance = () => {
         let total = this.myAcctController.totalBalance()
         this.setState({
-            idEnquiryResult: "Your total balance is: " + "$" + total
+            idEnquiryResult: `Your total balance is: $${total}` // OR "Your total balance is: " + "$" + total //React prefers string literals
         })
     }
 
     handleHighestBalance = () => {
-        console.log("clicked highbal")
+        let highest = this.myAcctController.getHighestBalance()
+        this.setState({
+            idEnquiryResult: `Your highest balance is: $${highest}` // OR "Your highest balance is: " + "$" + highest //React prefers string literals
+        })
     }
 
     handleLowestBalance = () => {
-        console.log("clicked lowbal")
+        let lowest = this.myAcctController.getLowestBalance()
+        this.setState({
+            idEnquiryResult: `Your lowest balance is: $${lowest}` // OR "Your lowest balance is: " + "$" + lowest //React prefers string literals
+        })
     }
 
     handleDeleteSelectedAcct = () => {
-        console.log("clicked delete")
-        // this.myAcctController.performDelete("k2");
-        // this.setState({
-        //     AllAccountsDetails: this.myAcctController.bankaccounts
-        // })
+        for (var i = 0; i < this.myAcctController.bankaccounts.length; i++) {
+            if (this.state.idTrxFrom === this.myAcctController.bankaccounts[i].acctType) { //idTrxFrom and IdDelAcct receive the same value however idDelAcct has no value in state hence using idTrxFrom
+                this.myAcctController.performDelete(this.state.idTrxFrom);
+            }
+            this.setState({
+                AllAccountsDetails: this.myAcctController.bankaccounts
+            })
+            console.log("clicked delete")
+        }
     }
 
     render() {
@@ -119,8 +136,8 @@ class BankApp extends React.Component {
             <div className="clAcctContainer">
                 <AccountGenerator createAcct={this.handleCreateAcct} acctNameChange={this.handleAcctNameChange} acctTypeChange={this.handleAcctTypeChange} />
                 <TransactBar trxFromSelected={this.state.idTrxFrom} TrxAmountInput={this.handleTrxAmount} handleDeposit={this.handleDeposit} handleWithdraw={this.handleWithdraw} />
-                <AccountCard details={this.state.AllAccountsDetails} retrieveAccount={this.handleRetrieveAccount} />
-                <AccountEnquiry totalBalance={this.state.idEnquiryResult} totalBalanceClick={this.handleTotalBalance} highestBalance={this.handleHighestBalance} lowestBalance={this.handleLowestBalance} deleteSelectedAcct={this.handleDeleteSelectedAcct} />
+                <AccountCard details={this.state.AllAccountsDetails} retrieveAccount={this.handleRetrieveAccount} retrieveForDelete={this.handleRetrieveForDelete} />
+                <AccountEnquiry enquiryResponse={this.state.idEnquiryResult} totalBalance={this.handleTotalBalance} highestBalance={this.handleHighestBalance} lowestBalance={this.handleLowestBalance} deleteRetrieved={this.state.idTrxFrom} deleteSelectedAcct={this.handleDeleteSelectedAcct} />
             </div>
         );
     }

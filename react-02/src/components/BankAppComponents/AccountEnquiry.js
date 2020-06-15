@@ -8,12 +8,13 @@ class AccountEnquiry extends React.Component {
             <div className="clAccountEnquiry">
                 <div id="idAcctEnquiry">
                     {/* <span className="clButtons">*/}
-                    <button id="idTotalBal" className="clBtn" onClick={this.props.totalBalanceClick}>Total Balance</button>
+                    <button id="idTotalBal" className="clBtn" onClick={this.props.totalBalance}>Total Balance</button>
                     <button id="idHighestBal" className="clBtn" onClick={this.props.highestBalance}>Highest Balance</button>
                     <button id="idLowestBal" className="clBtn" onClick={this.props.lowestBalance}>Lowest Balance</button>
-                    <button id="idDeleteAcct" className="clBtn" onClick={this.props.deleteSelectedAcct}>Delete Account</button>
                     {/* </span> */}
-                    <p id="idEnquiryResult">{this.props.totalBalance}</p>
+                    <p id="idEnquiryResult">{this.props.enquiryResponse}</p>
+                    <input id="idDelAcct" placeholder="Select to Delete" value={this.props.deleteRetrieved} readOnly />
+                    <button id="idDeleteAcct" className="clBtnRed" onClick={this.props.deleteSelectedAcct}>Delete Account</button>
                 </div>
             </div>
         );
