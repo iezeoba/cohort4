@@ -230,3 +230,9 @@ body {
   border-radius: 5px;
   background-color: skyblue;
 }
+
+.clBtnRed {
+  margin: 10px;
+  border-radius: 50px;
+  background-color: red;
+}
