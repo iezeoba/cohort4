@@ -1,98 +1,77 @@
 import React from 'react';
-import AccountGenerator from "./AccountGeneratorComp.js.js"
-import TransactBar from "./TransactBarComp.js.js"
-import AccountCard from './AccountCardComp.js.js';
-import { Account } from '../../business/Account.js'
+import CityGenerator from './CityGeneratorComp.js';
+import CitySearch from './CitySearchComp.js';
+import CityEnquiry from './CityEnquiryComp.js';
+import { Community } from '../../business/City_Community.js';
+
 
 class CityApp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            acctDetail: [],
-            acctName: "",
-            acctType: "",
-            idTrxFrom: "",
-            idTrxAmount: ""
+            cityName: "",
+            latitude: "",
+            longitude: "",
+            population: "",
+            checked: false
         }
-        this.newAccount = new Account();
+        this.myCommunity = new Community();
     }
 
-    handleCreateAcct = () => {
-        console.log("creating account", this.state.acctName, this.state.acctType);
-        // let key = myCtrl.createAccount("David Chan", "Savings", 200);
-
-        // if (this.newAccount.accountTypeExists(this.state.acctType)) {
-        //     return
-        // }
-        // else if (this.newAccount.accountTypeExists(this.state.acctType) === false) {
-        //     this.newAccount.createAccount(this.state.acctName, this.state.acctType)
-        //     this.setState({
-        //         acctDetail: this.newAccount.allAccounts
-        //     })
-        //     console.log(this.newAccount.allAccounts);
-        // } else {
-        //     this.newAccount.createAccount(this.state.acctName, this.state.acctType)
-        //     this.setState({
-        //         acctDetail: this.newAccount.allAccounts
-        //     })
-        //     console.log(this.newAccount.allAccounts);
-        // }
-    }
-
-    handleAcctName = (e) => {
-        this.setState({
-            acctName: e.target.value
-        })
-    }
-
-    handleAcctType = (e) => {
-        this.setState({
-            acctType: e.target.value
-        })
-    }
-
-    handleTrxFrom = (e) => {
-        this.setState({
-            idTrxFrom: e.target.value
-        })
-    }
-
-    handleTrxAmount = (e) => {
-        this.setState({
-            idTrxAmount: e.target.value
-        })
-    }
-
-    // handleDeposit(account) {
-    //     if (account === this.state.idTrxFrom) {
-    //         this.newAccount.idTrxFrom.deposit(this.state.idTrxAmount)
-    //         this.setState({
-    //             acctDetail: this.newAccount.allAccounts
-    //         })
-    //     }
-    // }
-
-    handleDeposit = () => {
-        if (this.newAccount.accountTypeExists(this.state.idTrxFrom)) {
-            this.newAccount.deposit(this.state.idTrxAmount)
+    checkBox = () => {
+        if (this.state.checked) {
             this.setState({
-                acctDetail: this.newAccount.allAccounts
+                checked: false
             })
-            console.log(this.newAccount.allAccounts);
-        }
+        } else
+            this.setState({
+                checked: true
+            })
     }
-    handleWithdraw() {
 
+    handleCreateCity = () => {
+        this.myCommunity.createCity(this.state.cityName, this.state.latitude, this.state.longitude, this.state.population, this.state.checked)
+        console.log(this.myCommunity.allCities);
+
+    }
+
+    handleCityName = (e) => {
+        this.setState({
+            cityName: e.target.value
+        })
+    }
+
+    handleLatitude = (e) => {
+        this.setState({
+            latitude: e.target.value
+        })
+    }
+
+    handleLongitude = (e) => {
+        this.setState({
+            longitude: e.target.value
+        })
+    }
+
+    handlePopulation = (e) => {
+        this.setState({
+            population: e.target.value
+        })
     }
 
     render() {
         return (
-            <div className="clAcctContainer">
-                <AccountGenerator handleCreateAcct={this.handleCreateAcct} acctNameChange={this.handleAcctName} acctTypeChange={this.handleAcctType} />
-                <TransactBar trxFromSelected={this.handleTrxFrom} TrxAmountInput={this.handleTrxAmount} handleDeposit={this.handleDeposit} handleWithdraw={this.handleWithdraw} />
-                <AccountCard details={this.state.acctDetail} />
+            <div className="clCityContainer">
+                <CityGenerator onChange={this.checkBox} cityName={this.handleCityName}
+                    latitude={this.handleLatitude}
+                    longitude={this.handleLongitude}
+                    population={this.handlePopulation}
+                    checked={this.state.checkBox}
+                    createCity={this.handleCreateCity} />
+                <CityEnquiry />
+                <CitySearch />
             </div>
         );
     }
 }
-export default BankApp
+export default CityApp
