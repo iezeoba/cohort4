@@ -4,6 +4,7 @@ export class City {
         this.latitude = latitude;
         this.longitude = longitude;
         this.population = population;
+        this.allCities = [];
     }
 
     show(cityname, arr) {
@@ -50,15 +51,14 @@ export class City {
 
 export class Community {
     constructor() {
-        this.allCities = [];
-        this.counter = 1;
+        this.newCity = new City();
         // this.url = 'http://localhost:5000/';
         this.url = "http://127.0.0.1:5000/";
-
+        this.allCities = [];
     }
 
     nextKey() {
-        return this.counter++;
+        return this.allCities.length;
     }
 
     async getCities(url = '', data = {}) {
@@ -91,8 +91,7 @@ export class Community {
     }
 
     async createCity(name, latitude, longitude, population, checkbox) {
-        let key = this.allCities.length;
-
+        let key = this.nextKey();
         let city = {};
         city.name = name;
         city.latitude = Number(latitude);
@@ -101,7 +100,7 @@ export class Community {
         city.key = ++key;
         //console.log(city.key)
         this.allCities.push(city);
-        this.addCityToServer(city, checkbox);
+        //this.addCityToServer(city, checkbox);
         return city
     }
 
@@ -149,7 +148,7 @@ export class Community {
     getPopulation(city, arr) {
         let index;
         for (var i = 0; i < arr.length; i++) {
-            if (city == arr[i].name) {
+            if (city === arr[i].name) {
                 index = i
             }
         }
@@ -169,7 +168,7 @@ export class Community {
     async deleteCity(cityname, arr) {
         let index, jindex;
         for (var i = 0; i < arr.length; i++) {
-            if (cityname == arr[i].name) {
+            if (cityname === arr[i].name) {
                 index = i
             }
         }
