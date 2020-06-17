@@ -3,7 +3,8 @@ import './App.css';
 import Game from './components/Game';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Account from './components/BankAppComponents/BankAppComp';
+import BankAppComp from './components/BankAppComponents/BankAppComp';
+import CityAppComp from './components/City_CommunityAppComponents/CityAppComp'
 
 // function App() {
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
     let idHome = document.getElementById("home");
     let idGame = document.getElementById("game");
     let idAccount = document.getElementById("account");
+    let idCity = document.getElementById("city");
     if (event.target.id === "id-reactlogo") {
       this.setState({
         value: "This is the react icon"
@@ -25,6 +27,7 @@ class App extends React.Component {
       idHome.style.display = "block";
       idGame.style.display = "none";
       idAccount.style.display = "none";
+      idCity.style.display = "none";
     }
     else if (event.target.id === "id-lego") {
       this.setState({
@@ -33,6 +36,7 @@ class App extends React.Component {
       idHome.style.display = "none";
       idGame.style.display = "block";
       idAccount.style.display = "none";
+      idCity.style.display = "none";
     }
     else if (event.target.id === "id-menu") {
       this.setState({
@@ -41,11 +45,16 @@ class App extends React.Component {
       idHome.style.display = "none";
       idGame.style.display = "none";
       idAccount.style.display = "block";
+      idCity.style.display = "none";
     }
     else if (event.target.id === "id-maps") {
       this.setState({
         value: "This is the map icon"
       });
+      idHome.style.display = "none";
+      idGame.style.display = "none";
+      idAccount.style.display = "none";
+      idCity.style.display = "block";
     }
     else if (event.target.id === "id-gears") {
       this.setState({
@@ -67,7 +76,10 @@ class App extends React.Component {
           <Game />
         </div>
         <div id="account" style={{ display: "none" }}>
-          <Account />
+          <BankAppComp />
+        </div>
+        <div id="city" style={{ display: "none" }}>
+          <CityAppComp />
         </div>
       </div>
     );
