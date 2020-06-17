@@ -2,9 +2,8 @@ import React from 'react';
 import AccountGenerator from "./AccountGeneratorComp.js"
 import TransactBar from "./TransactBarComp.js"
 import AccountCard from './AccountCardComp.js';
-import AccountEnquiry from './AccountEnquiry.js';
+import AccountEnquiry from './AccountEnquiryComp.js';
 import { AccountController } from '../../business/Account.js'
-//import { AccountController } from '../../business/Account.js'
 
 class BankApp extends React.Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class BankApp extends React.Component {
 
     handleCreateAcct = () => {
         if (this.myAcctController.bankaccounts.length === 0) {
-            //let key = this.myAcctController.createAccount(this.state.acctName, this.state.acctType, 0);
+            //let key = this.myAcctController.createAccount(this.state.acctName, this.state.acctType, 0); //figure how to use this key in creating other accounts
             this.myAcctController.createAccount(this.state.acctName, this.state.acctType, 0);
             this.setState({
                 AllAccountsDetails: this.myAcctController.bankaccounts
