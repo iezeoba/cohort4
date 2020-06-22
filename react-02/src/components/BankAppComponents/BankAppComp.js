@@ -3,7 +3,8 @@ import AccountGenerator from "./AccountGeneratorComp.js"
 import TransactBar from "./TransactBarComp.js"
 import AccountCard from './AccountCardComp.js';
 import AccountEnquiry from './AccountEnquiryComp.js';
-import { AccountController } from '../../business/Account.js'
+import { AccountController } from '../../business/Account.js';
+import './BankApp.css';
 
 class BankApp extends React.Component {
     constructor(props) {

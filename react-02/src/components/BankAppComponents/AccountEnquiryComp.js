@@ -13,6 +13,7 @@ class AccountEnquiry extends React.Component {
                     <button id="idLowestBal" className="clBtn" onClick={this.props.lowestBalance}>Lowest Balance</button>
                     {/* </span> */}
                     <p id="idEnquiryResult">{this.props.enquiryResponse}</p>
+                    <p className="clRedFonts">Warning!!! Selected account will be deleted</p>
                     <input id="idDelAcct" placeholder="Select to Delete" value={this.props.deleteRetrieved} readOnly />
                     <button id="idDeleteAcct" className="clBtnRed" onClick={this.props.deleteSelectedAcct}>Delete Account</button>
                 </div>
