@@ -7,7 +7,8 @@ class CitySearch extends React.Component {
                 <div id="idCitySearch">
                     {/* z<span>Account <select id="dropdownTrxn" name="acctsTrxn"></select> */}
                     <span className="clSpan">
-                        <input id="idSelectCity" placeholder="Select City to Delete" value={this.props.trxFromSelected} readOnly />
+                        <p className="clRedFonts">Warning!!! Selected city will be deleted</p>
+                        <input id="idSelectCity" placeholder="Select City to Delete" />
                     </span>
                     <button id="idDelete" className="clBtn" onClick={this.props.handleDeposit}>Delete</button>
                     {/* </span> */}
