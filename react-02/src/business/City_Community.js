@@ -20,11 +20,11 @@ export class City {
     }
 
     movedIn(population, immigrants) {
-        return population + immigrants;
+        return population + Number(immigrants);
     }
 
     movedOut(population, exits) {
-        return population - exits;
+        return population - Number(exits);
     }
 
     howBig(cityName, arr) {
@@ -104,18 +104,18 @@ export class Community {
         return city
     }
 
-    cityFinder(cityname) {
+    cityFinder(cityname, arr) {
         let index;
-        for (let i = 0; i < this.allCities.length; i++) {
-            if (cityname === this.allCities[i].name) {
+        for (let i = 0; i < arr.length; i++) {
+            if (cityname === arr[i].name) {
                 index = i
             }
         }
-        return this.allCities[index];
+        return arr[index];
     }
 
-    whichSphere(cityname) {
-        let lat = this.cityFinder(cityname).latitude;
+    whichSphere(cityname, arr) {
+        let lat = this.cityFinder(cityname, arr).latitude;
         if (lat > 0) {
             return `This location is in the Northern Hemisphere`;
         } else if (lat < 0) {
