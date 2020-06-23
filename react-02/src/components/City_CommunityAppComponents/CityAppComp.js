@@ -18,6 +18,7 @@ class CityApp extends React.Component {
             population: "",
             selectedCity: "Airdrie",
             movedInMovedOut: "",
+            enquiryResponse: "",
             cities: [],
             checked: false
         }
@@ -38,8 +39,6 @@ class CityApp extends React.Component {
 
     async componentDidMount() {
         let newCity = await this.myCommunity.getCities();
-        //mostNorthern.textContent = `Most Northern Location: ${city.getMostNorthern(city.allCities)}`
-        //mostSouthern.textContent = `Most Southern Location: ${city.getMostSouthern(city.allCities)}`
         this.setState({ cities: this.myCommunity.allCities })
         console.log(newCity);
     }
@@ -48,7 +47,6 @@ class CityApp extends React.Component {
         this.myCommunity.createCity(this.state.cityName, this.state.latitude, this.state.longitude, this.state.population, this.state.checked)
         this.setState({ cities: this.myCommunity.allCities })
         console.log(this.myCommunity.allCities);
-
     }
 
     handleCityName = (e) => {
@@ -82,20 +80,43 @@ class CityApp extends React.Component {
     }
 
     handleMovements = (e) => {
-        let getCityPopulation = this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population;
-        let remainingPopulation;
-        if (e.target.id === "idMovedOut") {
-            remainingPopulation = this.myCity.movedOut(getCityPopulation, this.state.movedInMovedOut);
+        if (e.target.id === "idHowBig") {
+            let size = this.myCity.howBig(this.state.selectedCity, this.myCommunity.allCities)
+            this.setState({ enquiryResponse: size })
+        } else if (e.target.id === "idWhichSphere") {
+            let sphere = this.myCommunity.whichSphere(this.state.selectedCity, this.myCommunity.allCities)
+            this.setState({ enquiryResponse: sphere })
+        } else if (e.target.id === "idMostNorthern") {
+            let northMost = this.myCommunity.getMostNorthern(this.myCommunity.allCities)
+            this.setState({ enquiryResponse: `${northMost} is the most northern location` })
+        } else if (e.target.id === "idMostSouthern") {
+            let southMost = this.myCommunity.getMostSouthern(this.myCommunity.allCities)
+            this.setState({ enquiryResponse: `${southMost} is the most southern location` })
+        }
+
+        else if (e.target.id === "idMovedOut") {
+            let getCityPopulation = this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population;
+
+            let newPopulation = this.myCity.movedOut(getCityPopulation, this.state.movedInMovedOut);
+            this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population = newPopulation
+            this.setState({ enquiryResponse: `The current population of ${this.state.selectedCity} is ${newPopulation}`, cities: this.myCommunity.allCities })
         }
         else if (e.target.id === "idMovedIn") {
-            remainingPopulation = this.myCity.movedIn(getCityPopulation, this.state.movedInMovedOut);
+            let getCityPopulation = this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population;
+            let newPopulation = this.myCity.movedIn(getCityPopulation, this.state.movedInMovedOut);
+            this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population = newPopulation
+            this.setState({ enquiryResponse: `The current population of ${this.state.selectedCity} is ${newPopulation}`, cities: this.myCommunity.allCities })
         }
-        this.myCommunity.cityFinder(this.state.selectedCity, this.myCommunity.allCities).population = remainingPopulation
-        this.setState({ population: remainingPopulation, cities: this.myCommunity.allCities })
+        //you can set more than one state variable in one setState object
     }
 
     handleRetrieveCity = (e) => {
         this.setState({ selectedCity: e.target.id })
+    }
+
+    handleDelete = () => {
+        this.myCommunity.deleteCity(this.state.selectedCity, this.myCommunity.allCities)
+        this.setState({ cities: this.myCommunity.allCities })
     }
 
     render() {
@@ -110,9 +131,7 @@ class CityApp extends React.Component {
                     createCity={this.handleCreateCity} />
                 <CityEnquiry allCities={this.state.cities}
                     selectedCity={this.state.selectedCity}
-                    newCommunity={this.myCommunity}
-                    selectToDelete={this.state.selectedCity}
-                    cityPopulation={this.state.population}
+                    enquiryResponse={this.state.enquiryResponse}
                     movedInMovedOut={this.state.movedInMovedOut}
                     migration={this.handleMigration}
                     movements={this.handleMovements} />
@@ -122,7 +141,7 @@ class CityApp extends React.Component {
                         retrieveCity={this.handleRetrieveCity} />
                     <CityMap selectedCity={this.state.selectedCity} />
                 </div>
-                <CitySearch fromSelected={this.state.selectedCity} />
+                <CitySearch delete={this.handleDelete} selectToDelete={this.state.selectedCity} />
             </div>
         );
     }
