@@ -1,10 +1,10 @@
 export class City {
-    constructor(name, latitude, longitude, population) {
+    constructor(key, name, latitude, longitude, population) {
+        this.key = key
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.population = population;
-        this.allCities = [];
     }
 
     show(cityname, arr) {
@@ -27,10 +27,10 @@ export class City {
         return population - Number(exits);
     }
 
-    howBig(cityName, arr) {
+    howBig(cityname, arr) {
         let index;
         for (let i = 0; i < arr.length; i++) {
-            if (cityName === arr[i].name) {
+            if (cityname === arr[i].name) {
                 index = i
             }
         }
@@ -52,7 +52,6 @@ export class City {
 export class Community {
     constructor() {
         this.newCity = new City();
-        // this.url = 'http://localhost:5000/';
         this.url = "http://127.0.0.1:5000/";
         this.allCities = [];
     }
@@ -78,13 +77,11 @@ export class Community {
             data = await this.postData(this.url + "save", city);
             data = await fetch("http://127.0.0.1:5000/all")
             let allCities = await data.json();
-            //console.log(allCities);
             return allCities;
         } else {
             let data = await this.postData(this.url + "add", city);
             data = await fetch("http://127.0.0.1:5000/all")
             let allCities = await data.json();
-            //console.log(allCities);
             return allCities;
         }
 
@@ -92,15 +89,19 @@ export class Community {
 
     async createCity(name, latitude, longitude, population, checkbox) {
         let key = this.nextKey();
-        let city = {};
-        city.name = name;
-        city.latitude = Number(latitude);
-        city.longitude = Number(longitude);
-        city.population = Number(population);
-        city.key = ++key;
+        let lat = Number(latitude);
+        let long = Number(longitude);
+        let popu = Number(population);
+
+        let city = new City(++key, name, lat, long, popu);
+        // city.name = name;
+        // city.latitude = Number(latitude);
+        // city.longitude = Number(longitude);
+        // city.population = Number(population);
+        // city.key = ++key;
         //console.log(city.key)
         this.allCities.push(city);
-        //this.addCityToServer(city, checkbox);
+        this.addCityToServer(city, checkbox);
         return city
     }
 
@@ -125,14 +126,11 @@ export class Community {
         }
     }
     getMostNorthern(arr) {
-        // console.log(arr);
         let arrCityLat = [];
         for (let i = 0; i < arr.length; i++) {
             arrCityLat[i] = arr[i].latitude;
         }
         let cityIndex = arrCityLat.indexOf(Math.max(...arrCityLat));
-        // console.log(arrCityLat);
-        // console.log(cityIndex);
         return arr[cityIndex].name;
     }
 
@@ -173,14 +171,15 @@ export class Community {
             }
         }
         jindex = (this.allCities[index].key).toString();
-        arr.splice(index, 1);
-        //console.log(jindex);
+        console.log(jindex);
 
         const getKey = this.allCities[index];
         let deleteCity = await this.postData(this.url + 'delete', getKey);
         deleteCity = await fetch(this.url + 'all');
         let response = await deleteCity.json();
-        //console.log(response);
+        console.log(response);
+
+        arr.splice(index, 1);
         return arr;
     }
     async postData(URL = '', data = {}) { //postData can be used to GET or POST data. if the parameter required is only a url, it is getting. if a url and another parameter, it is posting
