@@ -4,7 +4,8 @@ import Game from './components/Game';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import BankAppComp from './components/BankAppComponents/BankAppComp';
-import CityAppComp from './components/City_CommunityAppComponents/CityAppComp'
+import CityAppComp from './components/City_CommunityAppComponents/CityAppComp';
+import LinkedListAppComp from './components/LinkedListComponents/LinkedListAppCom';
 
 // function App() {
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
     let idGame = document.getElementById("game");
     let idAccount = document.getElementById("account");
     let idCity = document.getElementById("city");
+    let idLinkedList = document.getElementById("linkedList");
     if (event.target.id === "id-reactlogo") {
       this.setState({
         value: "This is the react icon"
@@ -28,6 +30,7 @@ class App extends React.Component {
       idGame.style.display = "none";
       idAccount.style.display = "none";
       idCity.style.display = "none";
+      idLinkedList.style.display = "none";
     }
     else if (event.target.id === "id-lego") {
       this.setState({
@@ -37,6 +40,7 @@ class App extends React.Component {
       idGame.style.display = "block";
       idAccount.style.display = "none";
       idCity.style.display = "none";
+      idLinkedList.style.display = "none";
     }
     else if (event.target.id === "id-menu") {
       this.setState({
@@ -46,6 +50,7 @@ class App extends React.Component {
       idGame.style.display = "none";
       idAccount.style.display = "block";
       idCity.style.display = "none";
+      idLinkedList.style.display = "none";
     }
     else if (event.target.id === "id-maps") {
       this.setState({
@@ -55,11 +60,17 @@ class App extends React.Component {
       idGame.style.display = "none";
       idAccount.style.display = "none";
       idCity.style.display = "block";
+      idLinkedList.style.display = "none";
     }
     else if (event.target.id === "id-gears") {
       this.setState({
         value: "This is the settings icon"
       });
+      idHome.style.display = "none";
+      idGame.style.display = "none";
+      idAccount.style.display = "none";
+      idCity.style.display = "none";
+      idLinkedList.style.display = "block";
     }
   }
 
@@ -80,6 +91,9 @@ class App extends React.Component {
         </div>
         <div id="city" style={{ display: "none" }}>
           <CityAppComp />
+        </div>
+        <div id="linkedList" style={{ display: "none" }}>
+          <LinkedListAppComp />
         </div>
       </div>
     );
