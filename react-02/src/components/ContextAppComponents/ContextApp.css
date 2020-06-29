@@ -29,10 +29,28 @@
   
   /* app styles */
   .clContextAppContainer {
+    margin: 5px 5px 5px 5px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-style: solid;
+    height: auto;     
+  }
+
+  #idContextAppContainer {
     max-width: 400px;
     margin: 30px auto;
     text-align: center;
   }
+
+  .clHeading {
+    display: block;
+    margin: 10px 10px 10px 10px;
+    border-width: 1px;
+    border-style: solid;
+    height: auto; 
+    padding: 5px 5px 5px 5px;
+  }
+
   nav{
     padding: 5px;
   }
