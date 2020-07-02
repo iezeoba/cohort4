@@ -68,11 +68,6 @@ class AccountController {
         const account = new Account(key, name, acctType, balance);
         this.bankaccounts.push(account)
         return key;
-        // let myAccount = {};
-        // myAccount.name = name;
-        // myAccount[`${acctType}`] = 0
-        // this.allAccounts.push(myAccount);
-        // return myAccount;
     }
 
     getAccount(key) {
@@ -93,15 +88,22 @@ class AccountController {
         SelectedAcct.withdraw(amt);
     }
 
-    performDelete(key) {
-        let account = this.getAccount(key);
-        //console.log(account);
-        let index = this.bankaccounts.indexOf(account)
-        //console.log(index);
-        this.bankaccounts.splice(index, 1);
-        //console.log(this.bankaccounts);
-        //return this.bankaccounts;
+    performDelete(account) {
+        for (let i = 0; i < this.bankaccounts.length; i++) {
+            if (account === this.bankaccounts[i].acctType) {
+                this.bankaccounts.splice(i, 1);
+            }
+        }
     }
+
+    // performDelete(account) {    //Use this method for multi-user situation //
+    //     let account = this.getAccount(key);
+    //     //console.log(account);
+    //     let index = this.bankaccounts.indexOf(account)
+    //     //console.log(index);
+    //     this.bankaccounts.splice(index, 1);
+    //     //console.log(this.bankaccounts);
+    // }
 
     totalBalance() {
         //let total = this.bankaccounts.reduce(function (a, b) { return a + b.balance }, 0); //OR use
@@ -113,7 +115,7 @@ class AccountController {
     }
 
     getHighestBalance() {
-        let max = 0; // assuming max to be zero will fail if there are -ve balances
+        let max = 0; // assuming 'max' to be zero will fail if there are -ve balances
         for (var i = 0; i < this.bankaccounts.length; i++) {
             if (this.bankaccounts[i].balance > max) {
                 max = this.bankaccounts[i].balance;
@@ -149,6 +151,7 @@ class AccountController {
     }
 };
 export { Account, AccountController };
+
 /*
 class AccountController
 write the tests
