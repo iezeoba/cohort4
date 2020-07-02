@@ -74,7 +74,7 @@ class BankApp extends React.Component {
 
     }
 
-    handleRetrieveForDelete = (e) => { //This method was no longer used//handleRetrieveAccount sufficed
+    handleRetrieveForDelete = (e) => { //This method was no longer used // handleRetrieveAccount sufficed //
         this.setState({
             idDelAcct: e.target.id
         })
@@ -123,19 +123,8 @@ class BankApp extends React.Component {
         })
     }
 
-    // handleDeleteSelectedAcct = () => {
-    //     for (var i = 0; i < this.myAcctController.bankaccounts.length; i++) {
-    //         if (this.state.idTrxFrom === this.myAcctController.bankaccounts[i].acctType) { //idTrxFrom and IdDelAcct receive the same value however idDelAcct has no value in state hence using idTrxFrom
-    //             this.myAcctController.performDelete(this.state.idTrxFrom);
-    //         }
-    //         this.setState({
-    //             AllAccountsDetails: this.myAcctController.bankaccounts
-    //         })
-    //     }
-    // }
-
     handleDeleteSelectedAcct = () => {
-        this.myAcctController.performDelete(this.state.idTrxFrom, this.myAcctController.bankaccounts)
+        this.myAcctController.performDelete(this.state.idTrxFrom)   //idTrxFrom and IdDelAcct receive the same value however idDelAcct has no value in state hence using idTrxFrom
         this.setState({
             AllAccountsDetails: this.myAcctController.bankaccounts
         })
