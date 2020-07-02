@@ -92,7 +92,7 @@ class LinkedList {
                 previous = current;
                 current = current.next;
             }
-            previous.next;
+            //previous.next;
         }
         this.size--;
     }
@@ -104,12 +104,16 @@ class LinkedList {
 
     printListData() {
         let current = this.head;
-        let list = [];
+        let list = [];  //Or let str = ""; //To return as string
         while (current) {
-            list.push(current.data)    //Or console.log(current.data); //If you want to print to the console
+            list.push(current.data)    //Or str +=`${current.data}->`//Using string     //Or console.log(current.data); //If you want to print to the console
             current = current.next;
         }
-        return list;
+        return list;    //Or str += 'null' then 'return str'
+    }
+
+    allData() {     //Prints all data showing all nodes 
+        return this.head
     }
 }
 export { Node, LinkedList };
