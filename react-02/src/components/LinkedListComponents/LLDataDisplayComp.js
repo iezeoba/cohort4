@@ -4,11 +4,8 @@ class LLDataDisplay extends React.Component {
     render() {
         return (
             <div className="clLLDataDisplay">
-
                 <div id="idLLDataDisplay">
-                    <p>Linked List Data Display</p>
-
-
+                    {/* <p>{this.props.linkedList}</p> */}
                 </div>
             </div>
         );
