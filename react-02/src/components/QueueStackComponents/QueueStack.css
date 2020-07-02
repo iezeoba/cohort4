@@ -46,8 +46,46 @@ body {
     border-width: 1px;
   }
 
+  .clStackCards {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 10px 10px 10px 10px;
+    border-width: 1px;
+    border-style: solid;
+    height: auto; 
+    padding: 5px 5px 5px 5px;
+  }
+
+  .clQueueCards {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 10px 10px;
+    border-width: 1px;
+    border-style: solid;
+    height: auto; 
+    padding: 5px 5px 5px 5px;
+  }
+
   .clBtn {
     margin: 10px;
     border-radius: 5px;
     background-color: skyblue;
+  }
+
+  .stackElement-enter {
+    opacity: 0.01;
+  }
+
+  .stackElement-enter, .stackElement-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+  }
+
+  .stackElement-leave {
+    opacity: 1;
+  }
+
+  .stackElement-leave, .stackElement-leave-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
   }
