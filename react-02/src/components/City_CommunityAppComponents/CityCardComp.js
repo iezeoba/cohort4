@@ -2,8 +2,8 @@ import React from 'react';
 
 class CityCard extends React.Component {
     render() {
-        const eachCityCard = this.props.cityDetails.map((items, index) => //
-            <CityInfo key={index} value={items} retrieveCity={this.props.retrieveCity} />
+        const eachCityCard = this.props.cityDetails.map((item, index) => //
+            <CityInfo key={index} value={item} retrieveCity={this.props.retrieveCity} />
         )
         return (
             <div className="clCityCard">
