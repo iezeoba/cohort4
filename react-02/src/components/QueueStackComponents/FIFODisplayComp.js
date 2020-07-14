@@ -11,7 +11,7 @@ class FIFODisplay extends React.Component {
             <div className="clFIFODisplay">
                 <strong><p>Queue Demo</p></strong>
                 <div className="clQueueCards">{queueElement}</div>
-                    Enter Data to Queue <input id="idDataToQueue" onChange={this.props.newQueueElement} />
+                    Enter Data to Queue <input id="idDataToQueue" value={this.props.queueElementValue} onChange={this.props.newQueueElement} />
                 <button id="idAddToQueue" className="clBtn" onClick={this.props.enqueue}>Put In Queue</button>
                 <button id="idRemoveFromQueue" className="clBtn" onClick={this.props.dequeue}>Take Out</button>
             </div>
@@ -19,7 +19,7 @@ class FIFODisplay extends React.Component {
     }
 }
 export default FIFODisplay;
-//class="animate__animated animate__slideInRight"
+
 function EachQueueElement(props) { //This component returns the queue element card
     return (
         <div className="clQueueElementCard" >
@@ -27,7 +27,7 @@ function EachQueueElement(props) { //This component returns the queue element ca
                 appear="slideInRight"
                 durationAppear={1000}
                 component="div" >
-                <button id="idQueueElementHover" >{props.item}⇨{props.elementPositionInQueue}</button> {/*The 'class' here works on the element as does the 'appear' property in <Animate> JSX element. How and why does it work?*/}
+                <button className="clQueueElementHover">{props.item}⇨{props.elementPositionInQueue}</button>
             </Animate>
         </div>
     )

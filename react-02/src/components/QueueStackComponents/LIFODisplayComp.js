@@ -12,12 +12,12 @@ class LIFODisplay extends React.Component {
             <div className="clLIFODisplay">
                 <strong><p>Stack Demo</p></strong>
                 <div className="clStackCards">{stackElement}</div>
-                    Enter Data to Stack <input id="idDataToStack" value={this.props.stackValue} onChange={this.props.newStackElement} />
+                    Enter Data to Stack <input id="idDataToStack" value={this.props.stackElementValue} onChange={this.props.newStackElement} />
                 <button id="idAddToStack" className="clBtn" onClick={this.props.addToStack}>Put In Stack</button>
                 <button id="idPopFromStack" className="clBtn" onClick={this.props.popFromStack}>Take Out</button>
                 <button id="idPeekStack" className="clBtn" onClick={this.props.peekStack}>Peek</button>
                 <h6>*Click 'Peek' to see last element</h6>
-                <p>Last element is {this.props.peeked}</p>
+                <p>{`Last element is ${this.props.peeked}`}</p>
             </div>
         );
     }
@@ -30,7 +30,7 @@ function EachStackElement(props) { //This component returns the stack element ca
             <Animate
                 appear="slideInLeft"
                 durationAppear={1000}
-                leave="slideOutRight"
+                leave="slideOutRight" //Not working. Figure out the reverse of 'appear' //
                 component="div" >
                 <button className="clStackElementHover">{props.item}⇨{props.elementPositionInStack}</button>
             </Animate>
