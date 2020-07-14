@@ -11,7 +11,7 @@ const myLL = new LinkedList();
 
 function LinkedListApp() {
     const [inputValue, setInputValue] = useState("")
-    const [select, setSelect] = useState("insertFirst");
+    const [select, setSelect] = useState("");
     const [nodePosition, setNodePosition] = useState(0)
     const [linkedListValues, setLinkedListValues] = useState("")
 
@@ -36,6 +36,8 @@ function LinkedListApp() {
     }
 
     const handleOperations = () => {
+        console.log(select);
+
         // printLL1();  //Prints list to the div //
         if (select === "InsertAtIndex") {
             if (nodePosition === 0) {
@@ -56,6 +58,8 @@ function LinkedListApp() {
             console.log(myLL.printListData());
         }
         else if (select === "InsertFirst") {
+            console.log("testing");
+
             myLL.insertFirst(inputValue)
         }
         else if (select === "ClearList") {
@@ -63,8 +67,8 @@ function LinkedListApp() {
         }
         else if (select === "AllData") {
             console.log(myLL.allData());
-
         }
+        setInputValue("");
         // console.log(myLL)
     }
 
@@ -74,6 +78,7 @@ function LinkedListApp() {
             <LLControl input={(e) => setInputValue(e.target.value)} value={inputValue}
                 submit={() => handleSubmit()}
                 selectChange={(e) => setSelect(e.target.value)}
+
                 selectValue={select}
                 nodePosition={nodePosition}
                 positionChange={handlePositionChange}

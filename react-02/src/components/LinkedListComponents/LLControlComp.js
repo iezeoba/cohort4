@@ -10,8 +10,8 @@ class LLControl extends React.Component {
                 <p>Node Position: {this.props.nodePosition}</p>
                 <p>Please select operation</p>
                 <select id="dropdown" name="accounts" value={this.props.selectedValue} onChange={this.props.selectChange}>
+                    <option value="Select">Select</option>
                     <option value="InsertFirst">Insert First</option>
-                    {/* <option value="InsertLast">Insert Last</option> */}
                     <option value="InsertAtIndex">Insert At Index</option>
                     <option value="GetAtIndex">Get At Index</option>
                     <option value="RemoveAtIndex">Remove At Index</option>
