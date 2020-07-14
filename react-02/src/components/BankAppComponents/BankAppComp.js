@@ -27,7 +27,7 @@ class BankApp extends React.Component {
             //let key = this.myAcctController.createAccount(this.state.acctName, this.state.acctType, 0); //figure how to use this key in creating other accounts
             this.myAcctController.createAccount(this.state.acctName, this.state.acctType, 0);
             this.setState({
-                AllAccountsDetails: this.myAcctController.bankaccounts
+                AllAccountsDetails: this.myAcctController.bankaccounts, acctName: "", acctType: ""
             })
             console.log(this.myAcctController.bankaccounts);
             //console.log(key)
@@ -70,8 +70,7 @@ class BankApp extends React.Component {
         this.setState({
             idTrxFrom: e.target.id
         })
-        console.log(e.target.key);
-
+        console.log(e.target.id);
     }
 
     handleRetrieveForDelete = (e) => { //This method was no longer used // handleRetrieveAccount sufficed //
@@ -86,7 +85,7 @@ class BankApp extends React.Component {
                 this.myAcctController.bankaccounts[i].deposit(this.state.idTrxAmount)
             }
             this.setState({
-                AllAccountsDetails: this.myAcctController.bankaccounts
+                AllAccountsDetails: this.myAcctController.bankaccounts, idTrxAmount: "", idTrxFrom: ""
             })
         }
     }
@@ -97,7 +96,7 @@ class BankApp extends React.Component {
                 this.myAcctController.bankaccounts[i].withdraw(this.state.idTrxAmount)
             }
             this.setState({
-                AllAccountsDetails: this.myAcctController.bankaccounts
+                AllAccountsDetails: this.myAcctController.bankaccounts, idTrxAmount: "", idTrxFrom: ""
             })
         }
     }
@@ -124,18 +123,25 @@ class BankApp extends React.Component {
     }
 
     handleDeleteSelectedAcct = () => {
-        this.myAcctController.performDelete(this.state.idTrxFrom)   //idTrxFrom and IdDelAcct receive the same value however idDelAcct has no value in state hence using idTrxFrom
-        this.setState({
-            AllAccountsDetails: this.myAcctController.bankaccounts
-        })
-        console.log(this.state.idTrxFrom.parent);
+        for (let i = 0; i < this.myAcctController.bankaccounts.length; i++)
+            if (this.state.idTrxFrom === this.myAcctController.bankaccounts[i].acctType) {
+                if (this.myAcctController.bankaccounts[i].balance > 0) {
+                    alert("Zerorise account before deletion")
+                }
+                else if (this.myAcctController.bankaccounts[i].balance === 0) {
+                    this.myAcctController.performDelete(this.state.idTrxFrom)   //idTrxFrom and IdDelAcct receive the same value however idDelAcct has no value in state hence using idTrxFrom
+                }
+                this.setState({
+                    AllAccountsDetails: this.myAcctController.bankaccounts
+                })
+            }
     }
 
     render() {
         return (
             <div className="clAcctContainer">
-                <AccountGenerator createAcct={this.handleCreateAcct} acctNameChange={this.handleAcctNameChange} acctTypeChange={this.handleAcctTypeChange} />
-                <TransactBar trxFromSelected={this.state.idTrxFrom} TrxAmountInput={this.handleTrxAmount} handleDeposit={this.handleDeposit} handleWithdraw={this.handleWithdraw} />
+                <AccountGenerator createAcct={this.handleCreateAcct} acctNameChange={this.handleAcctNameChange} acctTypeChange={this.handleAcctTypeChange} acctNameValue={this.state.acctName} acctTypeValue={this.state.acctType} />
+                <TransactBar trxFromSelected={this.state.idTrxFrom} TrxAmountInput={this.handleTrxAmount} handleDeposit={this.handleDeposit} handleWithdraw={this.handleWithdraw} trxAmount={this.state.idTrxAmount} />
                 <AccountCard details={this.state.AllAccountsDetails} retrieveAccount={this.handleRetrieveAccount} retrieveForDelete={this.handleRetrieveForDelete} />
                 <AccountEnquiry enquiryResponse={this.state.idEnquiryResult} totalBalance={this.handleTotalBalance} highestBalance={this.handleHighestBalance} lowestBalance={this.handleLowestBalance} deleteRetrieved={this.state.idTrxFrom} deleteSelectedAcct={this.handleDeleteSelectedAcct} />
             </div>

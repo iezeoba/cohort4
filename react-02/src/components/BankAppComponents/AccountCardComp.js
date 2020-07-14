@@ -17,7 +17,7 @@ export default AccountCard
 
 function AccountInfo(props) { //This component returns the account info card
     return (
-        <div id={props.value.acctType} className="clAcctInfoCard" onClick={props.retrieveAccount}>
+        <div id={props.value.acctType} className="clAcctInfoCard" onClick={props.retrieveAccount} >
             <p>Name: {props.value.name}</p>
             <p>Type: {props.value.acctType}</p>
             <p>Balance: {props.value.balance}</p>
