@@ -140,10 +140,15 @@ ol, ul {
 }
 
 .game {
-  display: inline-flex;
+    display: inline-flex;
   flex-direction: row;
   text-align: center;
   margin-bottom: 10px;
+  margin: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  height: auto; 
+  padding: 5px 5px 5px 5px;
 }
 
 .game-info {
