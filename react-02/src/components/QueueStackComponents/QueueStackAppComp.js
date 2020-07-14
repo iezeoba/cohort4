@@ -41,8 +41,7 @@ class QueueStackApp extends React.Component {
 
     handleEnqueue = () => {
         this.myQueue.enqueue(this.state.newQueueElement)
-        this.setState({ queueContent: this.myQueue.allQueueElements })
-        this.setState({ newQueueElement: "" })
+        this.setState({ queueContent: this.myQueue.allQueueElements, newQueueElement: "" })
         console.log(this.myQueue);
     }
 
@@ -76,13 +75,14 @@ class QueueStackApp extends React.Component {
                 <h1 id="h1">FIFO LIFO</h1>
                 <div className="clDisplay">
                     <FIFODisplay newQueueElement={this.handleNewQueueElement}
+                        queueElementValue={this.state.newQueueElement}
                         enqueue={this.handleEnqueue}
                         // enqueue={this.onClickQueue} //created this prop 'onClickQueue' to call multiple functions on one onClick event. It is a wrapper function // Wasn't used any more cos I figured how to use the 'key' prop and extract the index (key={i}) to use as the counter //
                         dequeue={this.handleDequeue}
                         queueDetails={this.state.queueContent}
                         counter={this.state.count} />
                     <LIFODisplay newStackElement={this.handleNewStackElement}
-                        stackValue={this.state.newStackElement}
+                        stackElementValue={this.state.newStackElement}
                         addToStack={this.handleAddToStack}
                         popFromStack={this.handlePopFromToStack}
                         peekStack={this.handlePeekStack}
