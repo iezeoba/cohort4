@@ -34,6 +34,25 @@ const functions = {
         }
     },
 
+    taxCalcBase1: (num) => {
+        return Number(num * 0.15);
+    },
+
+    taxCalcBase2: (num) => {
+        return Number(num * 0.205);
+    },
+    taxCalcBase3: (num) => {
+        return Number(num * 0.26);
+    },
+
+    taxCalcBase4: (num) => {
+        return Number(num * 0.29);
+    },
+
+    taxCalcBase5: (num) => {
+        return Number(num * 0.33);
+    },
+
     // Additional business logics just for practice and fun
     greet: (greeting) => {
         let response = "Goedendag";
