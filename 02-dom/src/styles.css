@@ -26,13 +26,13 @@ body {
     margin: 0;
 }
 
-.cardsContainer {
+.clCardsContainer {
     /* display: grid; */
     border: solid;
     text-align: center;
     background-color: lightgrey;
     width: 95vw; 
-    height:600px; 
+    height:700px; 
     margin: auto;
     margin-bottom: 10px;
     padding-top:20px; 
@@ -40,7 +40,7 @@ body {
     padding-right:15px;
 }
 
-.floatLeft {
+.clFloatLeft {
     /* display: inline-block; conflicts with the float property */
     float: left;
     background: white;
@@ -49,7 +49,7 @@ body {
     border:solid black;
 }
 
-.floatRight {
+.clFloatRight {
     /* display: inline-block; conflicts with the float property*/
     float: right;
     background: white;
@@ -58,21 +58,49 @@ body {
     border:solid black; 
 }
 
-.innerDiv {
-    width: 44.5vw;
+#idInnerDiv {
+    width: auto;
     height:80vh; 
     padding-top:20px; 
+    padding-bottom:20px; 
     padding-left:15px; 
-    padding-right:150px; 
+    padding-right:150px;
+    overflow: auto;
+    /* overflow: scroll; */
 }
 
-.clCard {
+#idDivCard {
+    display: block;
+    border: dotted;
+    border-width: 1px;
+    background-color: lightgrey;
+    padding: 25px;
+    margin: auto;
+    margin-top: 10px; 
+    height: auto;
+}
+
+.clAddBeforeAfterBtn {
+    display: inline;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: skyblue;
+  }
+
+  .clDeleteBtn {
+    display: block;
+    margin: auto;
+    border-radius: 50px;
+    background-color: red;
+  }
+
+/* .clCard {
     border: dotted;
     background-color: lightgrey;
     padding: 25px;
     margin: auto;
     margin-top: 10px;
-}
+} */
 
 /* Working With Cards 2 */
 

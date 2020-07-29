@@ -2,43 +2,46 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="styles.css">
     <title>DOM</title>
 </head>
+
 <body>
     <div id="idMainDiv" class="domContainer">
         <div class="childDiv">
-        <h1 id="idH1element">Basic DOM</h1>
-        <p id="idParagraph">This is a list of stuff</p>
-        <ol id="idList">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ol>
-        <input type="text" id="idInputItem">
-        <button id="idShowItem">Show</button>
-        <button id="idAddItem">Add</button>
+            <h1 id="idH1element">Basic DOM</h1>
+            <p id="idParagraph">This is a list of stuff</p>
+            <ol id="idList">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ol>
+            <input type="text" id="idInputItem">
+            <button id="idShowItem">Show</button>
+            <button id="idAddItem">Add</button>
         </div>
         <span id="idStatusBox">Status</span>
     </div>
 
-<!-- ---------- WORKING WITH CARDS ---------- -->
+    <!-- ---------- WORKING WITH CARDS ---------- -->
 
-<div id="idParentDiv" class="cardsContainer">
-    <div class="floatLeft">
+    <div id="idParentDiv" class="clCardsContainer">
         <h1>Working With Cards</h1>
-        <div id="innerDiv">        
-            <button id="addCard">Add Card</button>
+        <div class="clFloatLeft">
+            <div id="idInnerDiv">
+                <button id="idAddCard">Add Card</button><br><br>
+            </div>
+        </div>
+        <div class="clFloatRight">
+            <h1>Right Side</h1>
         </div>
     </div>
-    <div class="floatRight">
-        <h1>Right Side</h1>
-    </div>
-</div>
 
-<script src="./scripts/index.js" type="module"></script>   
+    <script src="./scripts/index.js" type="module"></script>
 </body>
+
 </html>

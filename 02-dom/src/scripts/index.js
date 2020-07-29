@@ -32,7 +32,7 @@ function addNewItem() {
     let btn = document.createElement("button");
     btn.appendChild(document.createTextNode("Remove"));
     newLi.appendChild(btn);
-    btn.onclick = removeParent;
+    btn.onclick = removeParent; //Here I'm assigning the removeParent function defined later below
 };
 
 function addNewItemOnClick() {
@@ -71,29 +71,70 @@ function removeParent(event) {
 };
 
 // ---------- Working With Cards ---------------------------
-let addCard = document.getElementById("addCard");
+let counter = 0;
 
-addCard.addEventListener("click", newCard);
+// function incrementCounter() {    //This block of code wasn't used //
+//     return counter++;
+// }
+
+let addCard = document.getElementById("idAddCard");
+
+addCard.addEventListener("click", callNewCardAndIncrementCounter);
+
 function newCard() {
     let newDiv = document.createElement("div");
-    newDiv.appendChild(document.createTextNode("Card 1"));
-    document.getElementById("innerDiv").appendChild(newDiv);
+    newDiv.appendChild(document.createTextNode(`Card ${++counter}`)); //Or newDiv.appendChild(document.createTextNode("Card" + " " + counter)); 
 
+    let lineBreak = document.createElement("br"); //To create linebreak between the textnode 'Card 1' and the <button> elements on the next line //
+    newDiv.appendChild(lineBreak);
+
+    document.getElementById("idInnerDiv").appendChild(newDiv);
+
+    newDiv.id = "idDivCard";
+    newDiv.classList.add("clDivCard");
+    // ----------------------------------------------------------------- //Separating newly created elements //
     let btnAddBefore = document.createElement("button");
     btnAddBefore.appendChild(document.createTextNode("Add Before"));
     newDiv.appendChild(btnAddBefore);
 
+    btnAddBefore.onclick = function (e) {        //Using inline method to add eventlistener. Inline can also be used on the source element in the html file //
+        let newNode = newCard();
+        let innerDiv = document.getElementById("idInnerDiv")
+        innerDiv.insertBefore(newNode, e.target.parentNode)
+    }
+
+    btnAddBefore.id = "idAddBeforeBtn";
+    btnAddBefore.classList.add("clAddBeforeAfterBtn")
+    // --------------------------------------------------------------- //Separating newly created elements //
     let btnAddAfter = document.createElement("button");
     btnAddAfter.appendChild(document.createTextNode("Add After"));
     newDiv.appendChild(btnAddAfter);
 
+    btnAddAfter.onclick = function (e) {
+        let newNode = newCard();
+        let innerDiv = document.getElementById("idInnerDiv")
+        innerDiv.insertBefore(newNode, e.target.parentNode.nextSibling)
+    }
+
+    btnAddAfter.id = "idAddAfterBtn";
+    btnAddAfter.classList.add("clAddBeforeAfterBtn")
+    // -------------------------------------------------------------- //Separating newly created elements //
     let btnDelete = document.createElement("button");
     btnDelete.appendChild(document.createTextNode("Delete"));
     newDiv.appendChild(btnDelete);
     btnDelete.onclick = removeParent;
     console.log("adding new div");
+
+    btnDelete.id = "idDeleteBtn";
+    btnDelete.classList.add("clDeleteBtn");
+    return newDiv;
 };
 
+
+function callNewCardAndIncrementCounter() {     //Calling the two functions defined above //
+    newCard();
+    //incrementCounter();
+}
 
 
 
@@ -122,62 +163,3 @@ function newCard() {
 
 // })
 // console.log(idStuff2);
-
-// Another Presentation =============================================================
-
-// let card = new CardManager();
-// const btnPrependTo = document.querySelector("#btnPrependTo");
-// const btnAppendTo = document.querySelector("#btnAppendTo");
-// const btnShow = document.querySelector("#btnShow");
-// const btnDelete = document.querySelector("#btnDelete");
-// const btnCard = document.getElementById("btnCard");
-// const cardContainer = document.querySelector("#card-container");
-
-// const olList = document.querySelector("#olList");
-
-// btnPrependTo.addEventListener("click", function (e) {
-//     let pm = new PageManager();
-//     let count = olList.children.length + 1;
-
-//     let element = pm.createListElement("Item " + count, "item" + count, "lstItem");
-//     pm.prependElement(element, olList);
-
-//     e.preventDefault();
-// });
-
-// btnAppendTo.addEventListener("click", function (e) {
-//     let pm = new PageManager();
-//     let count = olList.children.length + 1;
-
-//     let element = pm.createListElement("Item " + count, "item" + count, "lstItem");
-//     pm.appendElement(element, olList);
-//     e.preventDefault();
-
-// })
-
-// btnShow.addEventListener("click", function (e) {
-//     if (btnShow.value === "Show") {
-//         btnShow.value = "Hide"
-//         olList.classList.remove("hidden");
-//     } else {
-//         btnShow.value = "Show";
-//         olList.classList.add("hidden");
-//     }
-//     e.preventDefault();
-// })
-// btnDelete.addEventListener("click", function (e) {
-//     let pm = new PageManager();
-//     let li = pm.getLastListItem(olList);
-//     pm.deleteListElement(olList, li.dataset.uuid);
-//     e.preventDefault();
-// });
-
-// olList.addEventListener("click", function (e) {
-//     e.target;
-//     e.preventDefault();
-// })
-
-// btnCard.addEventListener("click", (e) => {
-//     cardContainer.appendChild(card.buildCard());
-//     e.preventDefault();
-// });
